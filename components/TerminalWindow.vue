@@ -8,7 +8,7 @@ defineSlots<{
 }>()
 </script>
 <template>
-  <div class="bg-screen border-2 border-line rounded-lg flex flex-col">
+  <div class="bg-screen border-2 border-line rounded-lg flex flex-col text-[10px] md:text-[12px]">
     <div class="bg-chrome rounded-t-lg border-b border-line flex flex-row items-center justify-between">
       <div class="flex items-center gap-2 pl-2">
         <div class="control bg-success"></div>
@@ -32,5 +32,7 @@ defineSlots<{
 <style scoped>
 .control {
   @apply w-3 h-3 rounded-full;
+}
+.terminal-text {
 }
 </style>
