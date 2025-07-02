@@ -1,0 +1,43 @@
+import { defineConfig, presetWind4 } from 'unocss'
+import transformerDirectives from '@unocss/transformer-directives';
+
+export default defineConfig({
+  presets: [
+    presetWind4({}),
+  ],
+  theme: {
+    colors: {
+      // Terminal contexts
+      'screen': 'var(--solarized-bg-primary)',
+      'chrome': 'var(--solarized-bg-secondary)',
+      'selection': 'var(--solarized-bg-highlight)',
+      'body': 'var(--solarized-text-primary)',
+      'dim': 'var(--solarized-text-secondary)',
+      'bright': 'var(--solarized-text-emphasized)',
+      'prompt': 'var(--solarized-prompt)',
+      'success': 'var(--solarized-success)',
+      'warning': 'var(--solarized-warning)',
+      'error': 'var(--solarized-error)',
+      'link': 'var(--solarized-link)',
+      'accent': 'var(--solarized-accent)',
+      'line': 'var(--solarized-border)'
+    },
+    fontFamily: {
+      sans: 'var(--font-mono)',
+      mono: 'var(--font-ui)',
+    },
+    fontWeight: {
+      normal: '400',
+      medium: '500',
+      semibold: '600'
+    }
+  },
+  shortcuts: {
+    'terminal-text': 'font-mono text-body',
+    'prompt-text': 'font-mono text-prompt font-medium',
+    'ui-text': 'font-sans text-dim',
+  },
+  transformers: [
+    transformerDirectives(),
+  ],
+})

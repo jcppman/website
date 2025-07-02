@@ -1,0 +1,195 @@
+/* Global Reset and Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--solarized-bg-primary);
+  color: var(--solarized-text-primary);
+  overflow-x: hidden;
+}
+
+/* Selection Styling */
+::selection {
+  background-color: var(--solarized-bg-highlight);
+  color: var(--solarized-text-emphasized);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--solarized-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--solarized-bg-highlight);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--solarized-border);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--solarized-bg-highlight) var(--solarized-bg-secondary);
+}
+
+/* Font-Specific Optimizations */
+.font-mono {
+  font-feature-settings: 'liga' 0, 'calt' 0; /* Disable ligatures in terminal */
+  letter-spacing: 0.025em;
+  line-height: var(--terminal-line-height);
+}
+
+.font-sans {
+  font-feature-settings: 'kern' 1; /* Enable kerning for Inter */
+  letter-spacing: -0.01em;
+}
+
+/* Focus and Accessibility */
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--solarized-prompt);
+  outline-offset: 2px;
+}
+
+/* Link Styling */
+a {
+  color: var(--solarized-link);
+  text-decoration: none;
+  transition: var(--terminal-transition);
+}
+
+a:hover {
+  color: var(--solarized-text-emphasized);
+  text-decoration: underline;
+}
+
+/* Button Reset */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  transition: var(--terminal-transition);
+}
+
+/* Input Reset */
+input {
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  color: var(--solarized-text-primary);
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--solarized-text-secondary);
+}
+
+/* Utility Classes for Terminal */
+.terminal-cursor {
+  background-color: var(--solarized-prompt);
+  animation: blink var(--terminal-cursor-blink) step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.terminal-typewriter {
+  overflow: hidden;
+  border-right: 2px solid var(--solarized-prompt);
+  white-space: nowrap;
+  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--solarized-prompt); }
+}
+
+/* Print Styles */
+@media print {
+  .terminal-container {
+    background: white !important;
+    color: black !important;
+  }
+
+  .terminal-cursor,
+  .terminal-typewriter {
+    animation: none !important;
+    border: none !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --solarized-text-primary: #ffffff;
+    --solarized-bg-primary: #000000;
+    --solarized-prompt: #00ffff;
+    --solarized-border: #ffffff;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .terminal-cursor,
+  .terminal-typewriter {
+    animation: none !important;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .font-mono {
+    font-size: 14px;
+  }
+
+  /* Prevent zoom on input focus */
+  input {
+    font-size: 16px;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets on mobile */
+  button,
+  [role="button"],
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
