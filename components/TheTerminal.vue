@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import TerminalResponseLine from "~/components/TerminalResponseLine.vue";
-import type { Response } from "~/components/terminal-types";
+import TerminalCommandExecution from "~/components/TerminalCommandExecution.vue";
+import type { Response, Link } from "~/components/terminal-types";
 
 interface Command {
   user: string;
@@ -30,11 +31,36 @@ const logoText = `
 
 const defaultUser = 'chriest@website';
 const defaultLocation = '~';
-function prompt(user: string, location: string): string {
-  return `${user}:${location}$ `;
+
+interface TreeNode {
+  name: string;
+  link?: Link;
+  children?: TreeNode[];
 }
 
-const newCommand = ref<string | null>(null);
+function generateTreeResponse(nodes: TreeNode[], depth = 0): Response[] {
+  const responses: Response[] = depth === 0 ? [
+    ['.'],
+  ] : [];
+
+  nodes.forEach((node, index) => {
+    const isLast = index === nodes.length - 1;
+    const prefix = '    '.repeat(depth);
+    const branch = isLast ? '└── ' : '├── ';
+
+    if (node.link) {
+      responses.push([prefix + branch, node.link]);
+    } else {
+      responses.push([prefix + branch + node.name]);
+    }
+
+    if (node.children) {
+      responses.push(...generateTreeResponse(node.children, depth + 1));
+    }
+  });
+
+  return responses;
+}
 
 const headline = [
   { text: 'GitHub', 'link': 'https://github.com/jcppman', external: true },
@@ -53,9 +79,42 @@ const commands = {
       ['Seasoned software engineer specialized in building rich, interactive applications.'],
       ['- 10+ years in web development'],
       ['- Music producer, yoga interpreter, photographer, lifelong learner'],
+      ['I am open for new opportunities and collaborations, feel free to reach out!'],
     ],
   }
 };
+
+const treeStructure: TreeNode[] = [
+  {
+    name: 'about.txt',
+    link: { text: 'about.txt', onClick: () => executeCommand(commands.about) }
+  },
+  {
+    name: 'resume.pdf',
+    link: { text: 'resume.pdf', link: '/YUNJUIYU_Chriest.pdf', external: true }
+  },
+  {
+    name: 'contact.sh',
+    link: { text: 'contact.sh', to: '/contact' }
+  },
+  {
+    name: 'portfolio/',
+    children: [
+      {
+        name: 'music',
+        link: { text: 'music/', to: '/portfolio/music' }
+      },
+      {
+        name: 'photography',
+        link: { text: 'photography/', to: '/portfolio/photography' }
+      },
+      {
+        name: 'coding',
+        link: { text: 'coding/', to: '/portfolio/coding' }
+      }
+    ]
+  }
+];
 
 const lines = ref<Command[]>([
   {
@@ -70,45 +129,29 @@ const lines = ref<Command[]>([
     user: defaultUser,
     location: defaultLocation,
     command: 'tree',
-    response: [
-      ['.'],
-      ['├── ', { text: 'about.txt', onClick: () => executeCommand(commands.about) }],
-      ['├── ', { text: 'resume.pdf', link: '', external: false }],
-      ['├── ', { text: 'contact.sh', link: '', external: false }],
-      ['└── ', { text: 'portfolio', link: '', external: false }],
-      ['    ├── ', { text: 'photography/', link: '', external: false }],
-      ['    ├── ', { text: 'code/', link: '', external: false }],
-      ['    └── ', { text: 'music/', link: '', external: false }],
-    ],
+    response: generateTreeResponse(treeStructure),
   }
 ]);
 
 function executeCommand(command: Command) {
   lines.value.push(command)
 }
+const newLine: Command = {
+  user: defaultUser,
+    location: defaultLocation,
+  command: '',
+  response: []
+};
 
 </script>
 <template>
-  <TerminalWindow title="~/Workspace" class="m-x-auto w-300 max-w-[90vw] max-h-full min-w-[375px]">
+  <div>
     <div class="logo hidden sm:block" v-html="logo"></div>
     <div class="logo sm:hidden" v-html="logoText"></div>
     <TerminalResponseLine :response="headline" class="pb-2" />
-    <div v-for="(line, lineIndex) in lines" class="execution py-1" :key="lineIndex">
-      <span class="text-prompt">{{ prompt(line.user, line.location) }}</span>
-      <span class="text-command"><span>{{ line.command }}</span></span>
-      <br />
-      <div class="py-2 whitespace-pre-wrap">
-        <div v-for="(response, index) in line.response" :key="index" >
-          <TerminalResponseLine :response="response" />
-        </div>
-      </div>
-    </div>
-    <div class="iteration py-1">
-      <span class="text-prompt">
-        {{ prompt(defaultUser, defaultLocation) }}
-      </span>
-    </div>
-  </TerminalWindow>
+    <TerminalCommandExecution v-for="(line, lineIndex) in lines" :key="lineIndex" :line="line" />
+    <TerminalCommandExecution :line="newLine" />
+  </div>
 </template>
 <style scoped>
 .logo {
@@ -123,14 +166,6 @@ function executeCommand(command: Command) {
 
 @keyframes blink {
   50% { opacity: 0; }
-}
-
-.execution:last-child:after {
-  content: "O";
-  display: inline-block;
-  color: var(--solarized-prompt);
-  background-color: var(--solarized-prompt);
-  animation: blink 1s step-end infinite;
 }
 
 </style>

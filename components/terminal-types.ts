@@ -1,9 +1,8 @@
-export type Response = Array<
-  string |
-  {
-    text: string;
-    link?: string;
-    external?: boolean;
-    onClick?: () => void,
-  }
->;
+export type Link = {
+  text: string;
+  link?: string;
+  external?: boolean;
+  to?: string;
+  onClick?: () => void,
+};
+export type Response = Array<string | Link>;

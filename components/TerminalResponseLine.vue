@@ -12,7 +12,7 @@ defineProps<{
       <template v-if="typeof content === 'string'">
         {{ content }}
       </template>
-      <TerminalLink v-else :link="content.link" @click="content.onClick" :external="content.external">
+      <TerminalLink v-else :link="content.link" :to="content.to" @click="content.onClick" :external="content.external">
         {{ content.text }}
       </TerminalLink>
     </template>
