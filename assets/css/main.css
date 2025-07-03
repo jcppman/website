@@ -4,7 +4,7 @@
 }
 
 html {
-  font-family: var(--font-ui);
+  font-family: var(--font-terminal-ui);
   font-size: 16px;
   line-height: 1.6;
 }
@@ -94,7 +94,7 @@ button {
 input {
   background: transparent;
   border: none;
-  font-family: var(--font-mono);
+  font-family: var(--font-terminal-mono);
   color: var(--solarized-text-primary);
   outline: none;
 }
@@ -104,21 +104,10 @@ input::placeholder {
 }
 
 /* Utility Classes for Terminal */
-.terminal-cursor {
-  background-color: var(--solarized-prompt);
-  animation: blink var(--terminal-cursor-blink) step-end infinite;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
 .terminal-typewriter {
   overflow: hidden;
-  border-right: 2px solid var(--solarized-prompt);
   white-space: nowrap;
-  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation: typing 2s steps(40, end);
 }
 
 @keyframes typing {

@@ -22,9 +22,9 @@ export default defineConfig({
       'accent': 'var(--solarized-accent)',
       'line': 'var(--solarized-border)'
     },
-    fontFamily: {
-      sans: 'var(--font-mono)',
-      mono: 'var(--font-ui)',
+    font: {
+      mono: 'var(--font-terminal-mono)',
+      sans: 'var(--font-terminal-ui)',
     },
     fontWeight: {
       normal: '400',
@@ -33,7 +33,7 @@ export default defineConfig({
     }
   },
   shortcuts: {
-    'terminal-text': 'font-mono text-body',
+    'terminal-text': 'font-mono text-body line-height-[1.2]',
     'prompt-text': 'font-mono text-prompt font-medium',
     'ui-text': 'font-sans text-dim',
   },
