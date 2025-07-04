@@ -7,8 +7,8 @@ defineSlots<{
 }>()
 </script>
 <template>
-  <div class="terminal-window bg-screen border-2 border-line rounded-lg flex flex-col text-md">
-    <div class="bg-chrome rounded-t-lg border-b border-line flex flex-row items-center justify-between py-2">
+  <div class="sm:shadow-card bg-screen sm:border-2 sm:border-line rounded-lg flex flex-col text-md">
+    <div class="hidden sm:flex bg-chrome rounded-t-lg border-b border-line flex flex-row items-center justify-between py-2">
       <div class="flex items-center gap-2 pl-2">
         <div class="control bg-error"></div>
         <div class="control bg-warning"></div>
@@ -30,8 +30,5 @@ defineSlots<{
 <style scoped>
 .control {
   @apply w-3 h-3 rounded-full;
-}
-.terminal-window {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) ;
 }
 </style>

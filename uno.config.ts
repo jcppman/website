@@ -32,6 +32,9 @@ export default defineConfig({
       semibold: '600'
     }
   },
+  rules: [
+    ['shadow-card', { 'box-shadow': '0 4px 20px rgba(0, 0, 0, 0.5)' }],
+  ],
   shortcuts: {
     'terminal-text': 'font-mono text-body line-height-[1.2]',
     'prompt-text': 'font-mono text-prompt font-medium',
