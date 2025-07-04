@@ -6,7 +6,7 @@
 </template>
 <style scoped>
 .layout-leave-active, .layout-enter-active {
-  transition: all 1s;
+  transition: all 0.8s;
   transform-style: preserve-3d;
 
   -webkit-backface-visibility: hidden; /* Safari */

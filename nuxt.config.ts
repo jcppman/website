@@ -15,7 +15,9 @@ export default defineNuxtConfig({
     '~/assets/css/vars.css',
     '~/assets/css/main.css',
   ],
+
+  ssr: false,
   app: {
     layoutTransition: { name: 'layout' }
-  }
-})
+  },
+});

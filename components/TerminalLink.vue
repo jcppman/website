@@ -1,16 +1,10 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   link?: string;
   external?: boolean;
   to?: string;
 }>();
 defineEmits(['click'])
-
-const handleClick = () => {
-  if (props.to) {
-    navigateTo(props.to);
-  }
-}
 </script>
 <template>
   <a
@@ -19,10 +13,10 @@ const handleClick = () => {
     :target="external ? '_blank' : undefined"
     :href="link"
   ><slot /></a>
-  <a 
+  <NuxtLink
     v-else-if="to"
-    class="text-link cursor-pointer" 
-    @click.prevent="handleClick"
-  ><slot /></a>
+    class="text-link cursor-pointer"
+    :to="to"
+  ><slot /></NuxtLink>
   <a v-else class="text-link cursor-pointer" @click.prevent="$emit('click')"><slot /></a>
 </template>
