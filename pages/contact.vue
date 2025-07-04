@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="mt-8">
-        <button 
+        <button
           @click="navigateTo('/')"
           class="px-6 py-2 bg-accent text-screen rounded hover:bg-opacity-80 transition-colors"
         >
@@ -46,4 +46,8 @@
 
 <script setup lang="ts">
 // Contact page content
+
+definePageMeta({
+  layout: 'back',
+})
 </script>

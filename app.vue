@@ -1,39 +1,23 @@
 <template>
-  <div class="h-screen p-4 bg-screen">
     <NuxtRouteAnnouncer />
-    <FlipableCard :flipped="isFlipped">
-      <template #front>
-        <TerminalWindow :title="terminalTitle" class="m-x-auto w-300 max-w-[90vw] max-h-full min-w-[375px]">
-          <TheTerminal />
-        </TerminalWindow>
-      </template>
-      <template #back>
-        <TerminalWindow :title="terminalTitle" class="m-x-auto w-300 max-w-[90vw] max-h-full min-w-[375px]">
-          <NuxtPage />
-        </TerminalWindow>
-      </template>
-    </FlipableCard>
-  </div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
 </template>
-<script setup lang="ts">
-const route = useRoute()
+<style scoped>
+.layout-leave-active, .layout-enter-active {
+  transition: all 1s;
+  transform-style: preserve-3d;
 
-const isFlipped = computed(() => {
-  return route.path !== '/'
-})
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
 
-const terminalTitle = computed(() => {
-  switch (route.path) {
-    case '/':
-      return '~/Workspace'
-    case '/contact':
-      return '~/contact.sh'
-    default:
-      if (route.path.startsWith('/portfolio/')) {
-        const section = route.params.section as string
-        return `~/portfolio/${section}/`
-      }
-      return '~/Workspace'
-  }
-})
-</script>
+.layout-leave-active {
+  @apply absolute inset-0;
+}
+
+.layout-leave-to, .layout-enter-from {
+  transform: rotateY(180deg);
+}
+</style>
