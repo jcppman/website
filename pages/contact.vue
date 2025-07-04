@@ -12,6 +12,8 @@
 
   <!-- Form -->
   <form @submit.prevent="handleSubmit" name="contact" netlify novalidate>
+    <input type="hidden" name="form-name" value="contact" />
+
     <!-- NAME Field -->
     <TerminalInput
       v-model="formData.name"
@@ -103,15 +105,15 @@ const validateForm = (): boolean => {
   errors.email = ''
   errors.subject = ''
   errors.message = ''
-  
+
   let isValid = true
-  
+
   // Validate name
   if (!formData.name.trim()) {
     errors.name = 'NAME is required'
     isValid = false
   }
-  
+
   // Validate email
   if (!formData.email.trim()) {
     errors.email = 'EMAIL is required'
@@ -120,19 +122,19 @@ const validateForm = (): boolean => {
     errors.email = 'EMAIL format is invalid'
     isValid = false
   }
-  
+
   // Validate subject
   if (!formData.subject.trim()) {
     errors.subject = 'SUBJECT is required'
     isValid = false
   }
-  
+
   // Validate message
   if (!formData.message.trim()) {
     errors.message = 'MESSAGE is required'
     isValid = false
   }
-  
+
   return isValid
 }
 

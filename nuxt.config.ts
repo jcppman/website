@@ -16,8 +16,12 @@ export default defineNuxtConfig({
     '~/assets/css/main.css',
   ],
 
-  ssr: false,
   app: {
     layoutTransition: { name: 'layout' }
   },
+  routeRules: {
+    '/*': { ssr: false },
+    '/': { ssr: false, prerender: true },
+    '/fake_contact': { ssr: true, prerender: true },
+  }
 });
