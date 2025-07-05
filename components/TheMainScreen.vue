@@ -105,12 +105,10 @@ const treeStructure: TreeNode[] = [
         link: { text: 'music/', to: '/portfolio/music' }
       },
       {
-        name: 'photography',
-        link: { text: 'photography/', to: '/portfolio/photography' }
+        name: '[WIP]photography',
       },
       {
-        name: 'coding',
-        link: { text: 'coding/', to: '/portfolio/coding' }
+        name: '[WIP]coding',
       }
     ]
   }

@@ -6,8 +6,8 @@ const { data: musicProjects } = await useAsyncData(route.path, () => {
 
 const formatMusicProject = (project: any) => {
   const tags = [
-    ...(project.types?.map((type: string) => ({ text: type, variant: 'type' })) ?? []),
-    ...(project.roles?.map((role: string) => ({ text: role, variant: 'role' })) ?? []),
+    ...(project.types?.map((type: string) => ({ text: type, variant: 'blue' })) ?? []),
+    ...(project.roles?.map((role: string) => ({ text: role, variant: 'green' })) ?? []),
   ]
 
   return {
@@ -27,7 +27,6 @@ definePageMeta({
 <template>
   <div class="p-4">
     <TerminalHeader title="Music Portfolio" showBackButton />
-
     <div class="flex flex-col gap-2">
       <PortfolioCard
         v-for="project in musicProjects"

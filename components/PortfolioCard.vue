@@ -12,7 +12,7 @@ withDefaults(defineProps<Props>(), {})
 </script>
 
 <template>
-  <div class="border border-gray-600/50 rounded-lg overflow-hidden flex flex-row items-center">
+  <div class="border border-line rounded-lg overflow-hidden flex flex-row items-center">
     <div class="p-5 flex-grow-1">
       <div class="mb-4">
         <h3 class="text-xl font-semibold text-prompt mb-2 font-mono">{{ title }}</h3>
