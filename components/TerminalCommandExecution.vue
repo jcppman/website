@@ -15,14 +15,26 @@ interface Props {
 
 defineProps<Props>();
 
+const elementRef = ref<HTMLElement>();
+
 function prompt(user: string, location: string): string {
   return `${user}:${location}$ `;
 }
 
+function scrollIntoView() {
+  if (elementRef.value) {
+    elementRef.value.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+defineExpose({
+  scrollIntoView
+});
+
 </script>
 
 <template>
-  <div class="execution py-1">
+  <div ref="elementRef" class="execution py-1">
     <span class="text-prompt">{{ prompt(line.user, line.location) }}</span>
     <span class="text-command"><span>{{ line.command }}</span></span>
     <template v-if="line.response.length > 0">

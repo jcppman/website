@@ -133,8 +133,20 @@ const lines = ref<Command[]>([
   }
 ]);
 
+const containerRef = ref<HTMLElement>();
+const lastTerminalRef = ref();
+
 function executeCommand(command: Command) {
   lines.value.push(command)
+  nextTick(() => {
+    scrollToBottom()
+  })
+}
+
+function scrollToBottom() {
+  if (lastTerminalRef.value) {
+    lastTerminalRef.value.scrollIntoView();
+  }
 }
 const newLine: Command = {
   user: defaultUser,
@@ -145,12 +157,14 @@ const newLine: Command = {
 
 </script>
 <template>
-  <div>
-    <div class="logo hidden sm:block" v-html="logo"></div>
-    <div class="logo sm:hidden" v-html="logoText"></div>
-    <TerminalResponseLine :response="headline" class="pb-2" />
-    <TerminalCommandExecution v-for="(line, lineIndex) in lines" :key="lineIndex" :line="line" />
-    <TerminalCommandExecution :line="newLine" />
+  <div ref="containerRef" class="overflow-y-auto">
+    <div>
+      <div class="logo hidden sm:block" v-html="logo"></div>
+      <div class="logo sm:hidden" v-html="logoText"></div>
+      <TerminalResponseLine :response="headline" class="pb-2" />
+      <TerminalCommandExecution v-for="(line, lineIndex) in lines" :key="lineIndex" :line="line" />
+      <TerminalCommandExecution ref="lastTerminalRef" :line="newLine" />
+    </div>
   </div>
 </template>
 <style scoped>
