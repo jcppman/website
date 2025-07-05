@@ -20,8 +20,9 @@ export default defineNuxtConfig({
     layoutTransition: { name: 'layout' }
   },
   routeRules: {
-    '/*': { ssr: false },
     '/': { ssr: false, prerender: true },
+    '/*': { ssr: false, prerender: true },
+    '/portfolio/*': { ssr: false, prerender: true },
     '/fake_contact': { ssr: true, prerender: true },
   }
 });

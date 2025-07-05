@@ -15,7 +15,7 @@ const formatMusicProject = (project: any) => {
     tags,
     image: project.img,
     subtitle: project.artists?.join(', ') || '',
-    title: project.title,
+    title: `${project.title} (${project.year})`,
   }
 }
 
@@ -25,18 +25,14 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="p-8">
-    <div class="text-center mb-12">
-      <h1 class="text-4xl font-semibold text-prompt mb-4 font-mono">
-        Music Portfolio
-      </h1>
-    </div>
+  <div class="p-4">
+    <TerminalHeader title="Music Portfolio" showBackButton />
 
     <div class="flex flex-col gap-2">
       <PortfolioCard
         v-for="project in musicProjects"
         :key="project.id"
-        :title="project.title"
+        :title="formatMusicProject(project).title"
         :subtitle="formatMusicProject(project).subtitle"
         :image="formatMusicProject(project).image"
         :tags="formatMusicProject(project).tags"

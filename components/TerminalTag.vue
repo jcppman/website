@@ -12,8 +12,8 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <span 
-    class="inline-block font-mono font-medium rounded text-xs uppercase tracking-wide whitespace-nowrap border transition-all duration-200 hover:-translate-y-px hover:shadow-md"
+  <span
+    class="inline-block font-mono font-medium rounded text-xs uppercase tracking-wide whitespace-nowrap border transition-all duration-200"
     :class="[
       small ? 'px-1.5 py-0.5 text-xs' : 'px-2 py-1 text-sm',
       {
