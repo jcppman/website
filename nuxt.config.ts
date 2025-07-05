@@ -21,7 +21,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/': { ssr: false, prerender: true },
-    '/*': { ssr: false, prerender: true },
+    '/contact': { ssr: false, prerender: true },
     '/portfolio/*': { ssr: false, prerender: true },
     '/fake_contact': { ssr: true, prerender: true },
   }

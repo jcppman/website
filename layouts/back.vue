@@ -15,8 +15,7 @@ const terminalTitle = computed(() => {
       return '~/contact.sh'
     default:
       if (route.path.startsWith('/portfolio/')) {
-        const section = route.params.section as string
-        return `~/portfolio/${section}/`
+        return `~${route.path}`;
       }
       return '~/Workspace'
   }

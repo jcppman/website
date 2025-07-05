@@ -37,8 +37,6 @@ withDefaults(defineProps<Props>(), {})
         <slot name="actions" />
       </div>
     </div>
-    <div v-if="image" class="relative h-48 w-48 overflow-hidden flex-shrink-0">
-      <NuxtImg :src="image" :alt="title" class="w-full h-full object-contain" />
-    </div>
+    <NuxtImg v-if="image" :src="image" :alt="title" fit="contain" width="192" height="192" class="flex-shrink-0"/>
   </div>
 </template>
