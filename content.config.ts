@@ -17,6 +17,16 @@ export default defineContentConfig({
         types: z.array(z.string()),
         img: z.string().optional(),
       }),
+    }),
+    photography: defineCollection({
+      type: 'data',
+      source: 'photography/*.md',
+      schema: z.object({
+        date: z.string().optional(),
+        title: z.string().optional(),
+        tags: z.array(z.string()),
+        photos: z.array(z.string()),
+      }),
     })
   }
 })

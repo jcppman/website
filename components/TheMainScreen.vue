@@ -106,6 +106,7 @@ const treeStructure: TreeNode[] = [
       },
       {
         name: '[WIP]photography',
+        link: { text: 'photography/', to: '/portfolio/photography' }
       },
       {
         name: '[WIP]coding',

@@ -1,4 +1,4 @@
-import { defineConfig, presetWind4 } from 'unocss'
+import {type CSSEntry, defineConfig, presetWind4, type UtilObject} from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives';
 
 export default defineConfig({

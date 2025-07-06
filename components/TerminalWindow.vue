@@ -21,7 +21,7 @@ defineSlots<{
         <div class="control bg-error"></div>
       </div>
     </div>
-    <div class="px-4 pb-2 overflow-y-auto terminal-text">
+    <div class="sm:px-2 pb-2 overflow-y-auto terminal-text">
       <slot />
     </div>
   </div>

@@ -1,20 +1,20 @@
 @layer theme {
-  :root {
-    /* Solarized Dark Terminal Theme */
-    --solarized-bg-primary: #002b36;     /* base03 */
-    --solarized-bg-secondary: #073642;   /* base02 */
-    --solarized-bg-highlight: #586e75;   /* base01 */
+  :root, :host {
+    /* Solarized Dark Terminal Theme (default) */
+    --solarized-bg-primary: #002b36; /* base03 */
+    --solarized-bg-secondary: #073642; /* base02 */
+    --solarized-bg-highlight: #586e75; /* base01 */
 
-    --solarized-text-primary: #839496;   /* base0 */
+    --solarized-text-primary: #839496; /* base0 */
     --solarized-text-secondary: #657b83; /* base00 */
     --solarized-text-emphasized: #93a1a1; /* base1 */
 
-    --solarized-prompt: #2aa198;          /* cyan */
-    --solarized-success: #859900;        /* green */
-    --solarized-warning: #b58900;        /* yellow */
-    --solarized-error: #dc322f;          /* red */
-    --solarized-link: #268bd2;           /* blue */
-    --solarized-accent: #d33682;         /* magenta */
+    --solarized-prompt: #2aa198; /* cyan */
+    --solarized-success: #859900; /* green */
+    --solarized-warning: #b58900; /* yellow */
+    --solarized-error: #dc322f; /* red */
+    --solarized-link: #268bd2; /* blue */
+    --solarized-accent: #d33682; /* magenta */
 
     /* Terminal-specific vars */
     --solarized-cursor: #2aa198;

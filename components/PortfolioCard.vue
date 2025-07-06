@@ -4,7 +4,7 @@ interface Props {
   subtitle?: string
   image?: string
   description?: string
-  tags?: Array<{ text: string; variant?: 'role' | 'type' | 'year' | 'artist' | 'default' }>
+  tags?: Array<{ text: string; variant?: 'green' | 'blue' | 'purple' | 'orange' | 'default' }>
 }
 
 withDefaults(defineProps<Props>(), {})
@@ -13,9 +13,9 @@ withDefaults(defineProps<Props>(), {})
 
 <template>
   <div class="border border-line rounded-lg overflow-hidden flex flex-row items-center">
-    <div class="p-5 flex-grow-1">
+    <div class="p2 sm:p-5 flex-grow-1">
       <div class="mb-4">
-        <h3 class="text-xl font-semibold text-prompt mb-2 font-mono">{{ title }}</h3>
+        <h3 class="text-sm sm:text-xl font-semibold text-prompt mb-2 font-mono">{{ title }}</h3>
         <p v-if="subtitle" class="text-bright text-sm font-mono">{{ subtitle }}</p>
       </div>
 
@@ -37,6 +37,8 @@ withDefaults(defineProps<Props>(), {})
         <slot name="actions" />
       </div>
     </div>
-    <NuxtImg v-if="image" :src="image" :alt="title" fit="contain" width="192" height="192" class="flex-shrink-0"/>
+    <div v-if="image" class="h-24 w-24 sm:h-48 sm:w-48 flex-shrink-0">
+      <NuxtImg :src="image" :alt="title" fit="contain" width="192" height="192" />
+    </div>
   </div>
 </template>
