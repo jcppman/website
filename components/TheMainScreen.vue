@@ -120,9 +120,11 @@ const lines = ref<Command[]>([
     location: defaultLocation,
     command: 'whoami',
     response: [
-      ['Frontend Engineer | Creative Technologist'],
+      ['Frontend Engineer | Creative Technologist | Music Producer'],
+      ['@chriest.yu'],
     ]
   },
+  commands.about,
   {
     user: defaultUser,
     location: defaultLocation,
