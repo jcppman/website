@@ -22,7 +22,7 @@ watchEffect(() => {
 
 <template>
   <div class="p-2 sm:p-4">
-    <TerminalHeader title="Music Portfolio" showBackButton />
+    <TerminalHeader title="Video Portfolio" showBackButton />
     <div class="flex flex-col gap-2">
       <PortfolioCard
         v-for="project in projects"
