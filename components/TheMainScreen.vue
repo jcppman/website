@@ -78,7 +78,7 @@ const commands = {
     response: [
       ['Seasoned software engineer specialized in building rich, interactive applications.'],
       ['- 10+ years in web development'],
-      ['- Music producer, yoga interpreter, photographer, lifelong learner'],
+      ['- Music producer, photographer, lifelong learner'],
       ['I am open for new opportunities and collaborations, feel free to reach out!'],
     ],
   }
@@ -105,8 +105,11 @@ const treeStructure: TreeNode[] = [
         link: { text: 'music/', to: '/portfolio/music' }
       },
       {
+        name: 'videography',
+        link: { text: 'videography/', to: '/portfolio/videography' }
+      },
+      {
         name: '[WIP]photography',
-        link: { text: 'photography/', to: '/portfolio/photography' }
       },
       {
         name: '[WIP]coding',

@@ -18,6 +18,19 @@ export default defineContentConfig({
         img: z.string().optional(),
       }),
     }),
+    videography: defineCollection({
+      type: 'page',
+      source: 'videography/*.md',
+      schema: z.object({
+        date: z.string(),
+        title: z.string(),
+        tags: z.array(z.string()),
+        link: z.object({
+          type: z.literal('youtube'),
+          videoId: z.string(),
+        }),
+      }),
+    }),
     photography: defineCollection({
       type: 'data',
       source: 'photography/*.md',

@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@unocss/nuxt',
+    '@nuxt/scripts'
   ],
   css:[
     '~/assets/css/vars.css',

@@ -3,7 +3,6 @@ interface Props {
   title: string
   subtitle?: string
   image?: string
-  description?: string
   tags?: Array<{ text: string; variant?: 'green' | 'blue' | 'purple' | 'orange' | 'default' }>
 }
 
@@ -29,9 +28,7 @@ withDefaults(defineProps<Props>(), {})
         />
       </div>
 
-      <p v-if="description" class="text-bright text-sm leading-relaxed mb-4">
-        {{ description }}
-      </p>
+      <slot />
 
       <div class="flex gap-2 items-center">
         <slot name="actions" />
