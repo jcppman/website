@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen p-1 sm:p-4 bg-screen relative">
-    <TerminalWindow :title="terminalTitle" class="m-x-auto w-300 max-w-[90vw] max-h-full min-w-[375px]">
+    <TerminalWindow :title="terminalTitle" class="m-x-auto w-[90vw] max-h-full min-w-[375px]">
       <slot />
     </TerminalWindow>
   </div>

@@ -15,7 +15,7 @@ body {
   min-height: 100vh;
   background-color: var(--solarized-bg-primary);
   color: var(--solarized-text-primary);
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Selection Styling */
