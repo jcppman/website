@@ -11,12 +11,10 @@ const GalleryItemSchema = z.object({
 });
 
 const GalleryMetaSchema = z.array(
-  z.tuple([
-    z.string(),
-    z.object({
-      description: z.string().optional(),
-    })
-  ])
+  z.object({
+    rule: z.string(),
+    description: z.string().optional(),
+  })
 );
 
 const galleryMeta = GalleryMetaSchema.parse(JSON.parse(readFileSync('./content/photography/meta.json').toString()));
@@ -43,11 +41,11 @@ const gallerySource = defineCollectionSource({
       cursor: `p-${date}-${sequence}`,
       img,
     };
-    galleryMeta.forEach(([rule, metaObject]) => {
-      if (img.match(new RegExp(rule))) {
+    galleryMeta.forEach((metaItem) => {
+      if (img.match(new RegExp(metaItem.rule))) {
         obj = {
           ...obj,
-          ...metaObject,
+          description: metaItem.description,
         };
       }
     });
