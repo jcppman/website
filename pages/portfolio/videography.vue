@@ -27,7 +27,7 @@ watchEffect(() => {
       <PortfolioCard
         v-for="project in projects"
         :key="project.id"
-        :title="project.title"
+        :title="project.title ?? ''"
         :tags="toColorTags(project.tags)"
         :clickable="false"
       >

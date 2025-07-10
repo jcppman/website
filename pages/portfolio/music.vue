@@ -27,6 +27,7 @@ definePageMeta({
 <template>
   <div class="p-2 sm:p-4">
     <TerminalHeader title="Music Portfolio" showBackButton />
+    <p class="text-bright my-6">Below is a selected list of music projects I have worked on.</p>
     <div class="flex flex-col gap-2">
       <PortfolioCard
         v-for="project in musicProjects"
