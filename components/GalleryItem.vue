@@ -18,17 +18,15 @@ defineProps<{
 </script>
 <template>
   <DialogRoot>
-    <DialogTrigger class="">
-      <NuxtImg
-        :as="NuxtImg"
-        class="rounded-lg shadow-md w-[400px] h-[400px] cursor-pointer object-cover"
-        width="400"
-        height="400"
-        alt="photo"
-        fix="cover"
-        :src="item.img"
-      />
-    </DialogTrigger>
+    <DialogTrigger
+      :as="NuxtImg"
+      class="rounded-lg shadow-md cursor-pointer"
+      width="400"
+      height="400"
+      alt="photo"
+      fit="cover"
+      :src="item.img"
+    />
     <DialogPortal>
       <DialogOverlay class="bg-black opacity-70 data-[state=open]:animate-overlayShow fixed inset-0 z-30" />
       <DialogClose>

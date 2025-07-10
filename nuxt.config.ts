@@ -25,5 +25,5 @@ export default defineNuxtConfig({
     '/contact': { ssr: false, prerender: true },
     '/portfolio/*': { ssr: false, prerender: true },
     '/fake_contact': { ssr: true, prerender: true },
-  }
+  },
 });
