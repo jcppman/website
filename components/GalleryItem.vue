@@ -18,11 +18,10 @@ defineProps<{
 </script>
 <template>
   <DialogRoot>
-    <DialogTrigger
-    >
+    <DialogTrigger class="">
       <NuxtImg
         :as="NuxtImg"
-        class="rounded-lg shadow-md cursor-pointer"
+        class="rounded-lg shadow-md w-[400px] h-[400px] cursor-pointer object-cover"
         width="400"
         height="400"
         alt="photo"
