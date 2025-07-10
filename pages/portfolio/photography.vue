@@ -51,13 +51,17 @@ definePageMeta({
   layout: 'back',
 })
 </script>
-
 <template>
   <div class="sm:p-4">
     <TerminalHeader title="Photography" showBackButton />
-    <div class="grid justify-center photo-grid gap-2">
-      <GalleryItem v-for="photo in photos" :key="photo.id" :item="photo" />
-      <div ref="loader"></div>
+    <div class="flex flex-col items-stretch justify-start">
+      <p class="text-bright text-center my-6">
+        Gears: Sony A6700 & Richo GR3X
+      </p>
+      <div class="grid justify-center photo-grid gap-2">
+        <GalleryItem v-for="photo in photos" :key="photo.id" :item="photo" />
+        <div ref="loader"></div>
+      </div>
     </div>
   </div>
 </template>

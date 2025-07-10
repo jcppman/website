@@ -36,11 +36,11 @@ const gallerySource = defineCollectionSource({
 
     const sequence = match && match[2] ? parseInt(match[2].replace('-', ''), 10) : 0;
 
-    let obj = {
+    let obj = GalleryItemSchema.parse({
       date,
       cursor: `p-${date}-${sequence}`,
       img,
-    };
+    });
     galleryMeta.forEach((metaItem) => {
       if (img.match(new RegExp(metaItem.rule))) {
         obj = {
