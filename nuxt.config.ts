@@ -26,4 +26,7 @@ export default defineNuxtConfig({
     '/portfolio/*': { ssr: false, prerender: true },
     '/fake_contact': { ssr: true, prerender: true },
   },
+  nitro: {
+    preset: 'netlify_edge'
+  }
 });
