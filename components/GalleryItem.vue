@@ -24,6 +24,7 @@ defineProps<{
       width="400"
       height="400"
       alt="photo"
+      fix="cover"
       :src="item.img"
     >
     </DialogTrigger>
