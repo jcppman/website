@@ -126,7 +126,6 @@ const lines = ref<Command[]>([
     command: 'whoami',
     response: [
       ['Frontend Engineer | Creative Technologist | Music Producer'],
-      ['@chriest.yu'],
     ]
   },
   commands.about,
