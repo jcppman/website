@@ -27,6 +27,6 @@ export default defineNuxtConfig({
     '/fake_contact': { ssr: true, prerender: true },
   },
   nitro: {
-    preset: 'netlify_edge'
+    preset: process.env.NETLIFY ? 'netlify_edge' : undefined
   }
 });
