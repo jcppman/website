@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@unocss/nuxt',
-    '@nuxt/scripts'
+    '@nuxt/scripts',
+    'nuxt-gtag'
   ],
   css:[
     '~/assets/css/vars.css',
@@ -28,5 +29,8 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: process.env.NETLIFY ? 'netlify_edge' : undefined
-  }
+  },
+  gtag: {
+    id: 'GTM-MGHH5C3F',
+  },
 });
