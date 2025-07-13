@@ -18,8 +18,7 @@ export default defineNuxtConfig({
     '~/assets/css/main.css',
   ],
 
-  app: {
-    layoutTransition: { name: 'layout' }
+  app: { layoutTransition: { name: 'layout' }
   },
   routeRules: {
     '/': { ssr: false, prerender: true },
@@ -30,7 +29,5 @@ export default defineNuxtConfig({
   nitro: {
     preset: process.env.NETLIFY ? 'netlify_edge' : undefined
   },
-  gtag: {
-    id: 'GTM-MGHH5C3F',
-  },
+  gtag: {},
 });
