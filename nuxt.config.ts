@@ -18,7 +18,13 @@ export default defineNuxtConfig({
     '~/assets/css/main.css',
   ],
 
-  app: { layoutTransition: { name: 'layout' }
+  app: {
+    layoutTransition: { name: 'layout' },
+    head: {
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      ]
+    }
   },
   routeRules: {
     '/': { ssr: false, prerender: true },

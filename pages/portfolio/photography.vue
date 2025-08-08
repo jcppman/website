@@ -52,7 +52,7 @@ definePageMeta({
 })
 </script>
 <template>
-  <div class="sm:p-4">
+  <div class="p-2 sm:p-4">
     <TerminalHeader title="Photography" showBackButton />
     <div class="flex flex-col items-stretch justify-start">
       <p class="text-bright text-center my-6">
