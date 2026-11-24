@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["Album"]
-img: "/music/chimera-cult-join-the-cult.png"
+img: "../../src/assets/music/chimera-cult-join-the-cult.png"
 ---

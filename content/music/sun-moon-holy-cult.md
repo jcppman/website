@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["Album"]
-img: "/music/sun-moon-holy-cult.png"
+img: "../../src/assets/music/sun-moon-holy-cult.png"
 ---

@@ -1,0 +1,75 @@
+---
+import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Site from '../layouts/Site.astro';
+import PhotoImage from '../components/PhotoImage.astro';
+import { featuredPhoto } from '../lib/photos';
+
+const lead = featuredPhoto('20240927-7');
+const selections = ['20240226-2', '20240217-3'].map(featuredPhoto);
+const releases = await Promise.all(
+  ['sun-moon-holy-cult', 'chimera-cult-join-the-cult'].map(async (id) => {
+    const entry = await getEntry('releases', id);
+    if (!entry) throw new Error('Unknown featured release: ' + id);
+    return entry.data;
+  }),
+);
+---
+
+<Site page="Home">
+  <figure>
+    <PhotoImage photo={lead} lead />
+    <figcaption>
+      {[lead.caption, lead.label].filter(Boolean).join(' · ')}
+    </figcaption>
+  </figure>
+  <section class="selection">
+    <h2>Music</h2>
+    <div class="records">
+      {releases.map((release) => (
+        <figure>
+          <Image
+            src={release.img}
+            alt={release.title + ' cover'}
+            widths={[320, 540, 800]}
+            sizes="(max-width:740px) 92vw, 29vw"
+            format="webp"
+          />
+          <figcaption>
+            <strong>
+              <a href={release.links[0].url}>{release.title}</a>
+            </strong>
+            <span>
+              {release.artists.join(', ')} · {release.year}
+            </span>
+            <span>{release.roles.join(', ')}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <a class="more" href="/portfolio/music/" aria-label="More music">
+      More
+    </a>
+  </section>
+  <section class="selection">
+    <h2>Photographs</h2>
+    <div class="photos">
+      {selections.map((photo) => (
+        <figure>
+          <PhotoImage photo={photo} />
+          <figcaption>{photo.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+    <a
+      class="more"
+      href="/portfolio/photography/"
+      aria-label="More photographs"
+    >
+      More
+    </a>
+  </section>
+  <script>
+    import '../lib/masonry';
+  </script>
+</Site>

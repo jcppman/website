@@ -1,5 +1,5 @@
 ---
-title: "All Releases"
+title: "Selected Releases"
 year: "2018 - Now"
 artists: ["Alpaca"]
 roles: ["Performing", "Producing", "Tracking", "Mixing", "Mastering"]
@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["Album"]
-img: "/music/alpaca-all-releases.png"
+img: "../../src/assets/music/alpaca-all-releases.png"
 ---

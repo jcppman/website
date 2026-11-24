@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["Album"]
-img: "/music/blood-of-life-reign-over-horror.png"
+img: "../../src/assets/music/blood-of-life-reign-over-horror.png"
 ---

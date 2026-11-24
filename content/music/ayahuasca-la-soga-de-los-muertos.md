@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["EP"]
-img: "/music/ayahuasca-la-soga-de-los-muertos.png"
+img: "../../src/assets/music/ayahuasca-la-soga-de-los-muertos.png"
 ---

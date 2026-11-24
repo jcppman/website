@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["Album"]
-img: "/music/virtti-yatra-vibration-aligned.png"
+img: "../../src/assets/music/virtti-yatra-vibration-aligned.png"
 ---

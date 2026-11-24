@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Site from '../../layouts/Site.astro';
+import Outline from '../../components/Outline.astro';
+
+const releases = (await getCollection('releases')).sort(
+  (a, b) =>
+    parseInt(b.data.year) - parseInt(a.data.year) ||
+    b.data.title.localeCompare(a.data.title),
+);
+const items = releases.map(({ id, data }) => ({
+  id: 'release-' + id,
+  title: data.title,
+  cover: data.img,
+  artist: data.artists.join(', '),
+}));
+---
+
+<Site page="Music">
+  <div class="catalog">
+    {releases.map(({ data }, i) => (
+      <article id={items[i].id}>
+        <Image
+          src={data.img}
+          alt={data.title + ' cover'}
+          widths={[240, 400, 640]}
+          sizes="(max-width:740px) 28vw, 21vw"
+          format="webp"
+          loading={i === 0 ? 'eager' : 'lazy'}
+        />
+        <div>
+          <p class="meta">{[data.year, ...data.types].join(' · ')}</p>
+          <h2>{data.title}</h2>
+          <p>{data.artists.join(', ')}</p>
+          <p class="credit">{data.roles.join(', ')}</p>
+          {data.links.map((link) => (
+            <a class="action" href={link.url}>
+              Listen on {link.title}
+            </a>
+          ))}
+        </div>
+      </article>
+    ))}
+  </div>
+  <Outline slot="overlay" items={items} />
+</Site>

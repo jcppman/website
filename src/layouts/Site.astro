@@ -1,0 +1,86 @@
+---
+import '@fontsource/ibm-plex-sans/latin-400.css';
+import '@fontsource/ibm-plex-sans/latin-600.css';
+import '../styles/site.css';
+import { PUBLIC_GTAG_ID, NUXT_PUBLIC_GTAG_ID } from 'astro:env/server';
+
+interface Props {
+  page: 'Home' | 'Music' | 'Photography';
+}
+const { page } = Astro.props;
+const pages = {
+  Home: '/',
+  Music: '/portfolio/music/',
+  Photography: '/portfolio/photography/',
+};
+const links = {
+  GitHub: 'https://github.com/jcppman',
+  Audiorective: 'https://github.com/rytho-ai/audiorective',
+  'Molten Steel Studios': 'https://youtube.com/@moltensteelstudios722',
+  'Personal YouTube': 'https://youtube.com/@chriestyuintheworld',
+  Instagram: 'https://instagram.com/chriest.yu',
+  LinkedIn: 'https://linkedin.com/in/chriestyu',
+};
+const intro = 'I build software, make records and take photographs.';
+const analytics = PUBLIC_GTAG_ID || NUXT_PUBLIC_GTAG_ID;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#211d23" />
+    <meta name="description" content={intro} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={new URL(pages[page], Astro.site)} />
+    <title>{page === 'Home' ? 'Chriest Yu' : page + ' · Chriest Yu'}</title>
+    {analytics && (
+      <script
+        is:inline
+        async
+        src={
+          'https://www.googletagmanager.com/gtag/js?id=' +
+          encodeURIComponent(analytics)
+        }
+      ></script>
+    )}
+    {analytics && <script define:vars={{ analytics }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', analytics);
+    </script>}
+  </head>
+  <body>
+    <a class="skip" href="#content">
+      Skip to content
+    </a>
+    <div class="shell">
+      <header class="sidebar">
+        <h1>
+          <a href="/">Chriest Yu</a>
+        </h1>
+        <p>{intro}</p>
+        <nav aria-label="Site">
+          {Object.entries(pages).map(([name, href]) => (
+            <a href={href} aria-current={page === name ? 'page' : undefined}>
+              {name}
+            </a>
+          ))}
+        </nav>
+        <div class="sidebar-links" role="group" aria-label="Elsewhere">
+          {Object.entries(links).map(([name, href]) => (
+            <a href={href}>{name}</a>
+          ))}
+        </div>
+      </header>
+      <main id="content" tabindex="-1" aria-label={page}>
+        <slot />
+      </main>
+    </div>
+    <slot name="overlay" />
+  </body>
+</html>

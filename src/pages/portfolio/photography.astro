@@ -1,0 +1,59 @@
+---
+import { getImage } from 'astro:assets';
+import Site from '../../layouts/Site.astro';
+import PhotoImage from '../../components/PhotoImage.astro';
+import Outline from '../../components/Outline.astro';
+import Viewer from '../../components/Viewer.astro';
+import { groups } from '../../lib/photos';
+
+const albums = await Promise.all(
+  Array.from(groups, async ([month, photos]) => ({
+    id: 'photos-' + month,
+    title: photos[0].label,
+    photos: await Promise.all(
+      photos.map(async (photo) => ({
+        photo,
+        full: (
+          await getImage({
+            src: photo.image,
+            width: Math.min(1920, photo.image.width),
+            format: 'webp',
+            quality: 85,
+          })
+        ).src,
+      })),
+    ),
+  })),
+);
+---
+
+<Site page="Photography">
+  {albums.map(({ id, title, photos }, index) => (
+    <>
+      {index > 0 && <hr class="crop-marks" />}
+      <section class="album" id={id} aria-label={title}>
+        <div class="photos">
+          {photos.map(({ photo, full }) => (
+            <figure>
+              <a
+                class="photo-open"
+                href={full}
+                aria-haspopup="dialog"
+                aria-label={'Open photograph: ' + photo.alt}
+              >
+                <PhotoImage photo={photo} />
+              </a>
+            </figure>
+          ))}
+        </div>
+      </section>
+    </>
+  ))}
+  <Fragment slot="overlay">
+    <Outline items={albums} />
+    <Viewer />
+  </Fragment>
+  <script>
+    import '../../lib/masonry';
+  </script>
+</Site>

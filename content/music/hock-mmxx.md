@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["Album"]
-img: "/music/hock-mmxx.png"
+img: "../../src/assets/music/hock-mmxx.png"
 ---

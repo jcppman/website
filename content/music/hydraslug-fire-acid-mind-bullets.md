@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["Single"]
-img: "/music/hydraslug-fire-acid-mind-bullets.png"
+img: "../../src/assets/music/hydraslug-fire-acid-mind-bullets.png"
 ---

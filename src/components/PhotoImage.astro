@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import type { Photo } from '../lib/photos';
+interface Props {
+  photo: Photo;
+  lead?: boolean;
+}
+const { photo, lead = false } = Astro.props;
+---
+
+<Image
+  src={photo.image}
+  alt={photo.alt}
+  widths={[400, 720, 1080, 1600]}
+  sizes={
+    lead
+      ? '(max-width: 740px) 92vw, (max-width: 1560px) 58vw, 900px'
+      : '(max-width: 740px) 92vw, (max-width: 1560px) 28vw, 440px'
+  }
+  format="webp"
+  loading={lead ? 'eager' : 'lazy'}
+  fetchpriority={lead ? 'high' : undefined}
+/>

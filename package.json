@@ -1,38 +1,24 @@
 {
-  "name": "nuxt-app",
+  "name": "chriest-me",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "@nuxt/content": "3.6.1",
-    "@nuxt/eslint": "1.4.1",
-    "@nuxt/fonts": "0.11.4",
-    "@nuxt/icon": "1.15.0",
-    "@nuxt/image": "1.10.0",
-    "@nuxt/scripts": "0.11.9",
-    "@unhead/vue": "^2.0.3",
-    "@vueuse/core": "^13.5.0",
-    "better-sqlite3": "^12.2.0",
-    "eslint": "^9.0.0",
-    "glob": "^11.0.3",
-    "gray-matter": "^4.0.3",
-    "nuxt": "^3.17.5",
-    "nuxt-gtag": "3.0.3",
-    "reka-ui": "^2.3.2",
-    "vue": "^3.5.17",
-    "vue-router": "^4.5.1"
+    "dev": "astro dev",
+    "build": "astro build",
+    "generate": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "node --test tests/*.test.mjs"
   },
   "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a",
+  "dependencies": {
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "astro": "^7.4.13",
+    "sharp": "^0.35.5"
+  },
   "devDependencies": {
-    "@types/youtube": "^0.1.2",
-    "@unocss/nuxt": "^66.3.2",
-    "@unocss/transformer-directives": "^66.3.2",
-    "unocss": "^66.3.2"
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^6.0.3"
   }
 }

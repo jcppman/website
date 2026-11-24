@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["EP"]
-img: "/music/rude-gove-chirp-of-doom.png"
+img: "../../src/assets/music/rude-gove-chirp-of-doom.png"
 ---

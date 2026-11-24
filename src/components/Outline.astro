@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Item {
+  id: string;
+  title: string;
+  cover?: ImageMetadata;
+  artist?: string;
+}
+interface Props {
+  items: Item[];
+}
+const { items } = Astro.props;
+---
+
+<nav class="scroll-outline" aria-label="On this page">
+  {items.map(({ id, title, cover, artist }) => (
+    <a href={'#' + id} aria-label={title}>
+      <span class="outline-preview" aria-hidden="true">
+        {cover && <Image src={cover} alt="" width={108} format="webp" />}
+        <span>
+          <strong>{title}</strong>
+          {artist && <small>{artist}</small>}
+        </span>
+      </span>
+    </a>
+  ))}
+</nav>
+<label class="mobile-outline">
+  Index
+  <select class="outline-picker" aria-label="Jump to a section">
+    {items.map((item) => (
+      <option value={item.id}>{item.title}</option>
+    ))}
+  </select>
+</label>
+<script>
+  const links = Array.from(
+    document.querySelectorAll<HTMLAnchorElement>('.scroll-outline a'),
+  );
+  const sections = links.map((link) =>
+    document.getElementById(link.hash.slice(1))!,
+  );
+  const picker = document.querySelector<HTMLSelectElement>('.outline-picker')!;
+  picker.addEventListener('change', () => {
+    location.hash = picker.value;
+  });
+
+  let active = -1;
+  function update() {
+    if (!links.length) return;
+    let index = 0;
+    for (const [i, section] of sections.entries()) {
+      if (section.getBoundingClientRect().top > innerHeight * 0.22) break;
+      index = i;
+    }
+    if (scrollY + innerHeight >= document.documentElement.scrollHeight - 2)
+      index = links.length - 1;
+    if (index === active) return;
+    links[active]?.removeAttribute('aria-current');
+    active = index;
+    links[index].setAttribute('aria-current', 'location');
+    picker.selectedIndex = index;
+  }
+  document.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('hashchange', update);
+  window.addEventListener('resize', update);
+  new ResizeObserver(update).observe(document.querySelector('main')!);
+  update();
+</script>

@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["Album"]
-img: "/music/demon-eleven-children.png"
+img: "../../src/assets/music/demon-eleven-children.png"
 ---

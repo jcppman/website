@@ -10,5 +10,5 @@ links: [
   }
 ]
 types: ["Album"]
-img: "/music/hell-savior-keep-running-for-metal.png"
+img: "../../src/assets/music/hell-savior-keep-running-for-metal.png"
 ---
