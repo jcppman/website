@@ -291,6 +291,13 @@ hr.crop-marks {
   height: 100%;
   object-fit: contain;
 }
+.viewer-image[hidden] {
+  display: none;
+}
+.viewer-message {
+  grid-area: 2/2;
+  text-align: center;
+}
 .photo-viewer button {
   min-width: 44px;
   min-height: 44px;

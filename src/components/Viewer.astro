@@ -4,7 +4,8 @@
       ×
     </button>
   </form>
-  <img class="viewer-image" alt="" />
+  <img class="viewer-image" alt="" hidden />
+  <span class="viewer-message" role="status"></span>
   <button type="button" class="viewer-prev" aria-label="Previous photograph">
     ←
   </button>
@@ -20,19 +21,31 @@
   const links = Array.from(
     document.querySelectorAll<HTMLAnchorElement>('.photo-open'),
   );
+  const message = viewer.querySelector<HTMLElement>('.viewer-message')!;
   let current = 0;
-  let switching = false;
+  let request = 0;
 
-  function display(index: number) {
-    switching = viewer.open;
+  async function display(index: number) {
+    const selection = ++request;
+    const switching = viewer.open;
     current = (index + links.length) % links.length;
     const link = links[current];
+    image.hidden = true;
+    message.textContent = 'Loading photograph…';
     image.alt = link.querySelector('img')!.alt;
     image.src = link.href;
     position.textContent = current + 1 + ' / ' + links.length;
-  }
-
-  image.addEventListener('load', () => {
+    try {
+      await image.decode();
+    } catch {
+      if (selection === request) {
+        message.textContent = 'Photograph could not be loaded.';
+      }
+      return;
+    }
+    if (selection !== request) return;
+    message.textContent = '';
+    image.hidden = false;
     if (
       viewer.open &&
       switching &&
@@ -44,7 +57,7 @@
         easing: 'ease-out',
       });
     }
-  });
+  }
   links.forEach((link, i) =>
     link.addEventListener('click', (event) => {
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
