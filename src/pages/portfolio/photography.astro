@@ -4,14 +4,40 @@ import Site from '../../layouts/Site.astro';
 import PhotoImage from '../../components/PhotoImage.astro';
 import Outline from '../../components/Outline.astro';
 import Viewer from '../../components/Viewer.astro';
-import { groups } from '../../lib/photos';
+import { featuredPhoto, groups } from '../../lib/photos';
 
+const summerPhotos = [
+  '20260815-8',
+  '20260609-11',
+  '20260609-10',
+  '20260609-9',
+].map(featuredPhoto);
+
+const sections = Array.from(groups).flatMap(([month, photos]) => {
+  const remaining = photos.filter((photo) => !summerPhotos.includes(photo));
+  const monthSections = [];
+  if (month === summerPhotos[0].month) {
+    monthSections.push({
+      id: 'photos-2026-06-to-08',
+      title: 'June–August 2026',
+      monthAnchor: remaining.length ? undefined : 'photos-' + month,
+      photos: summerPhotos,
+    });
+  }
+  if (remaining.length) {
+    monthSections.push({
+      id: 'photos-' + month,
+      title: remaining[0].label,
+      photos: remaining,
+    });
+  }
+  return monthSections;
+});
 const albums = await Promise.all(
-  Array.from(groups, async ([month, photos]) => ({
-    id: 'photos-' + month,
-    title: photos[0].label,
+  sections.map(async (section) => ({
+    ...section,
     photos: await Promise.all(
-      photos.map(async (photo) => ({
+      section.photos.map(async (photo) => ({
         photo,
         full: (
           await getImage({
@@ -28,11 +54,11 @@ const albums = await Promise.all(
 ---
 
 <Site page="Photography">
-  {albums.map(({ id, title, photos }, index) => (
+  {albums.map(({ id, title, photos, monthAnchor }, index) => (
     <>
       {index > 0 && <hr class="crop-marks" />}
       <section class="album" id={id} aria-label={title}>
-        <div class="photos">
+        <div class="photos" id={monthAnchor}>
           {photos.map(({ photo, full }) => (
             <figure>
               <a
