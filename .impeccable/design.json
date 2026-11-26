@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-26T03:47:08.445Z",
+  "title": "Design System: chriest.me",
+  "extensions": {
+    "colorMeta": {
+      "darkroom-plum": {
+        "role": "neutral",
+        "displayName": "Darkroom Plum",
+        "canonical": "#211d23",
+        "oklch": "oklch(23.8% 0.013 315)",
+        "tonalRamp": [
+          "oklch(15% 0.004 315)",
+          "oklch(26% 0.013 315)",
+          "oklch(38% 0.014 315)",
+          "oklch(49% 0.014 315)",
+          "oklch(61% 0.014 315)",
+          "oklch(72% 0.014 315)",
+          "oklch(84% 0.013 315)",
+          "oklch(95% 0.004 315)"
+        ]
+      },
+      "print-cream": {
+        "role": "neutral",
+        "displayName": "Print Cream",
+        "canonical": "#fff0dd",
+        "oklch": "oklch(96.2% 0.03 74)",
+        "tonalRamp": [
+          "oklch(15% 0.006 74)",
+          "oklch(26% 0.02 74)",
+          "oklch(38% 0.03 74)",
+          "oklch(49% 0.03 74)",
+          "oklch(61% 0.03 74)",
+          "oklch(72% 0.03 74)",
+          "oklch(84% 0.02 74)",
+          "oklch(95% 0.006 74)"
+        ]
+      },
+      "safelight-peach": {
+        "role": "primary",
+        "displayName": "Safelight Peach",
+        "canonical": "#ffb597",
+        "oklch": "oklch(83.6% 0.096 43)",
+        "tonalRamp": [
+          "oklch(15% 0.019 43)",
+          "oklch(26% 0.063 43)",
+          "oklch(38% 0.096 43)",
+          "oklch(49% 0.096 43)",
+          "oklch(61% 0.096 43)",
+          "oklch(72% 0.096 43)",
+          "oklch(84% 0.063 43)",
+          "oklch(95% 0.019 43)"
+        ]
+      },
+      "raised-plum": {
+        "role": "neutral",
+        "displayName": "Raised Plum",
+        "canonical": "#312b32",
+        "oklch": "oklch(29.8% 0.015 321)",
+        "tonalRamp": [
+          "oklch(15% 0.004 321)",
+          "oklch(26% 0.013 321)",
+          "oklch(38% 0.017 321)",
+          "oklch(49% 0.017 321)",
+          "oklch(61% 0.017 321)",
+          "oklch(72% 0.017 321)",
+          "oklch(84% 0.013 321)",
+          "oklch(95% 0.004 321)"
+        ]
+      },
+      "ledger-rule": {
+        "role": "neutral",
+        "displayName": "Ledger Rule",
+        "canonical": "#594b57",
+        "oklch": "oklch(43.1% 0.027 331)",
+        "tonalRamp": [
+          "oklch(15% 0.005 331)",
+          "oklch(26% 0.017 331)",
+          "oklch(38% 0.027 331)",
+          "oklch(49% 0.027 331)",
+          "oklch(61% 0.027 331)",
+          "oklch(72% 0.027 331)",
+          "oklch(84% 0.017 331)",
+          "oklch(95% 0.005 331)"
+        ]
+      },
+      "raised-edge": {
+        "role": "neutral",
+        "displayName": "Raised Edge",
+        "canonical": "#675661",
+        "oklch": "oklch(47.4% 0.028 339)",
+        "tonalRamp": [
+          "oklch(15% 0.006 339)",
+          "oklch(26% 0.018 339)",
+          "oklch(38% 0.028 339)",
+          "oklch(49% 0.028 339)",
+          "oklch(61% 0.028 339)",
+          "oklch(72% 0.028 339)",
+          "oklch(84% 0.018 339)",
+          "oklch(95% 0.006 339)"
+        ]
+      },
+      "control-edge": {
+        "role": "neutral",
+        "displayName": "Control Edge",
+        "canonical": "#76646e",
+        "oklch": "oklch(52.4% 0.027 344)",
+        "tonalRamp": [
+          "oklch(15% 0.005 344)",
+          "oklch(26% 0.018 344)",
+          "oklch(38% 0.027 344)",
+          "oklch(49% 0.027 344)",
+          "oklch(61% 0.027 344)",
+          "oklch(72% 0.027 344)",
+          "oklch(84% 0.018 344)",
+          "oklch(95% 0.005 344)"
+        ]
+      },
+      "faded-tick": {
+        "role": "neutral",
+        "displayName": "Faded Tick",
+        "canonical": "#a4919a",
+        "oklch": "oklch(67.6% 0.026 348)",
+        "tonalRamp": [
+          "oklch(15% 0.005 348)",
+          "oklch(26% 0.017 348)",
+          "oklch(38% 0.026 348)",
+          "oklch(49% 0.026 348)",
+          "oklch(61% 0.026 348)",
+          "oklch(72% 0.026 348)",
+          "oklch(84% 0.017 348)",
+          "oklch(95% 0.005 348)"
+        ]
+      },
+      "crop-mark-rose": {
+        "role": "neutral",
+        "displayName": "Crop Mark Rose",
+        "canonical": "#cb9a8b",
+        "oklch": "oklch(72.8% 0.063 38)",
+        "tonalRamp": [
+          "oklch(15% 0.013 38)",
+          "oklch(26% 0.041 38)",
+          "oklch(38% 0.063 38)",
+          "oklch(49% 0.063 38)",
+          "oklch(61% 0.063 38)",
+          "oklch(72% 0.063 38)",
+          "oklch(84% 0.041 38)",
+          "oklch(95% 0.013 38)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The site name in the sidebar."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Homepage section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Release titles in the Music catalog."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Introduction, credits and running text."
+      },
+      "body-strong": {
+        "displayName": "Body strong",
+        "purpose": "Current navigation item and homepage release titles."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Figure captions and catalog metadata, in peach."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Outbound sidebar links, outline preview titles, mobile picker."
+      },
+      "label-small": {
+        "displayName": "Label small",
+        "purpose": "Secondary lines in the outline preview."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "reveal-content",
+        "value": "220ms ease-out",
+        "purpose": "Main content fade-in on page load."
+      },
+      {
+        "name": "link-color",
+        "value": "120ms ease-out",
+        "purpose": "Link colour change on hover."
+      },
+      {
+        "name": "outline-tick",
+        "value": "140ms ease-out",
+        "purpose": "Scroll outline tick width/colour and preview fade."
+      },
+      {
+        "name": "viewer-open",
+        "value": "160ms ease-out",
+        "purpose": "Photo viewer and backdrop fade-in."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "740px",
+        "purpose": "At or below: single column, static sidebar, mobile section picker."
+      },
+      {
+        "name": "short",
+        "value": "520px (max-height)",
+        "purpose": "At or below: sidebar stops being sticky."
+      }
+    ],
+    "overlays": [
+      {
+        "name": "viewer-backdrop",
+        "value": "rgb(16 13 17 / 92%)",
+        "purpose": "Photo viewer backdrop."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Inline Link",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "Cream underlined link that turns peach on hover.",
+      "html": "<p class=\"ds-body\">Released on <a class=\"ds-link\" href=\"#\">Bandcamp</a>.</p>",
+      "css": ".ds-body{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:20px;line-height:1.5;color:#fff0dd;background:#211d23;padding:16px;margin:0}.ds-link{color:inherit;text-decoration-thickness:1px;text-underline-offset:.19em;transition:color 120ms ease-out}.ds-link:hover{color:#ffb597}.ds-link:focus-visible{outline:2px solid #ffb597;outline-offset:4px}"
+    },
+    {
+      "name": "Sidebar Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Vertical peach links; the current page is cream, weight 600, no underline.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Home</a><a href=\"#\">Music</a><a href=\"#\">Photography</a></nav>",
+      "css": ".ds-nav{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:20px;line-height:1.5;display:grid;justify-items:start;gap:.4em 1em;color:#ffb597;background:#211d23;padding:16px}.ds-nav a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.19em;transition:color 120ms ease-out}.ds-nav a:hover{color:#ffb597}.ds-nav a[aria-current]{color:#fff0dd;font-weight:600;text-decoration:none}.ds-nav a:focus-visible{outline:2px solid #ffb597;outline-offset:4px}"
+    },
+    {
+      "name": "Record Figure",
+      "kind": "card",
+      "refersTo": "figure-caption",
+      "description": "Homepage release: square cover, strong title link, artists · year, roles.",
+      "html": "<figure class=\"ds-record\"><div class=\"ds-cover\"></div><figcaption><strong><a href=\"#\">Holy Cult</a></strong><span>Sun Moon · 2023</span><span>Mixing, Mastering</span></figcaption></figure>",
+      "css": ".ds-record{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:20px;line-height:1.5;margin:0;width:260px;background:#211d23;color:#fff0dd;padding:16px}.ds-cover{aspect-ratio:1;background:#312b32}.ds-record figcaption{margin-top:.5em;font-size:18px;color:#ffb597}.ds-record strong,.ds-record span{display:block}.ds-record strong{font-size:1.15em;color:#fff0dd}.ds-record a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.19em}.ds-record a:hover{color:#ffb597}"
+    },
+    {
+      "name": "Catalog Entry",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "Music catalog row: cover left; metadata, serif title, artists, credits and listening links right.",
+      "html": "<article class=\"ds-entry\"><div class=\"ds-cover\"></div><div><p class=\"ds-meta\">2020 · Album</p><h2>MMXX</h2><p>Hock</p><p>Tracking, Mixing, Mastering</p><a class=\"ds-action\" href=\"#\">Bandcamp</a></div></article>",
+      "css": ".ds-entry{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:20px;line-height:1.5;display:grid;grid-template-columns:minmax(110px,.9fr) minmax(0,1.5fr);gap:32px;align-items:center;padding:2rem 16px;border-top:1px solid #594b57;background:#211d23;color:#fff0dd}.ds-entry .ds-cover{aspect-ratio:1;background:#312b32}.ds-entry p{margin:0}.ds-meta{font-size:18px;color:#ffb597}.ds-entry h2{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:44px;line-height:1.02;letter-spacing:-.04em;margin:.18em 0}.ds-action{color:#ffb597;text-decoration-thickness:1px;text-underline-offset:.19em}.ds-action:focus-visible{outline:2px solid #ffb597;outline-offset:4px}"
+    },
+    {
+      "name": "Crop-Mark Divider",
+      "kind": "custom",
+      "refersTo": "crop-mark-rose",
+      "description": "Full-width divider with only its two bottom corners drawn, between photograph months.",
+      "html": "<div class=\"ds-crop-wrap\"><hr class=\"ds-crop\"></div>",
+      "css": ".ds-crop-wrap{background:#211d23;padding:24px}.ds-crop{position:relative;height:11px;border:0;margin:0}.ds-crop::before,.ds-crop::after{content:\"\";position:absolute;top:0;width:22px;height:10px;border-bottom:1px solid #cb9a8b}.ds-crop::before{left:0;border-left:1px solid #cb9a8b}.ds-crop::after{right:0;border-right:1px solid #cb9a8b}"
+    },
+    {
+      "name": "Scroll Outline",
+      "kind": "nav",
+      "refersTo": "outline-preview",
+      "description": "Right-edge tick outline; the active tick grows and turns peach, hover shows a preview flyout.",
+      "html": "<nav class=\"ds-outline\"><a href=\"#\"><span class=\"ds-preview\"><span class=\"ds-thumb\"></span><span><strong>November</strong><small>12 photographs</small></span></span></a><a href=\"#\" aria-current=\"true\"></a><a href=\"#\"></a><a href=\"#\"></a></nav>",
+      "css": ".ds-outline{font-family:'IBM Plex Sans',Arial,sans-serif;display:flex;flex-direction:column;align-items:flex-end;background:#211d23;padding:16px 0 16px 280px;width:max-content}.ds-outline a{position:relative;display:grid;place-items:center end;width:32px;height:25px;padding-right:8px;text-decoration:none;color:#fff0dd}.ds-outline a::after{content:\"\";width:10px;height:2px;background:#a4919a;transition:width 140ms ease-out,background-color 140ms ease-out}.ds-outline a:is(:hover,:focus-visible,[aria-current])::after{width:19px;background:#ffb597}.ds-preview{position:absolute;right:100%;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:12px;width:max-content;padding:9px 14px 9px 9px;background:#312b32;border:1px solid #675661;line-height:1.25;opacity:0;transition:opacity 140ms ease-out;pointer-events:none}.ds-outline a:is(:hover,:focus-visible) .ds-preview{opacity:1}.ds-thumb{width:54px;height:54px;background:#594b57}.ds-preview strong,.ds-preview small{display:block}.ds-preview strong{font-size:17px}.ds-preview small{color:#ffb597;font-size:15px;margin-top:4px}"
+    },
+    {
+      "name": "Mobile Section Picker",
+      "kind": "input",
+      "refersTo": "mobile-outline",
+      "description": "Bottom-right raised button covered by a transparent native select.",
+      "html": "<label class=\"ds-picker\">Sections<select aria-label=\"Jump to a section\"><option>November</option><option>October</option></select></label>",
+      "css": ".ds-picker{font-family:'IBM Plex Sans',Arial,sans-serif;position:relative;display:inline-block;padding:8px 16px;min-height:44px;line-height:1.5;background:#312b32;color:#ffb597;border:1px solid #76646e;font-size:17px}.ds-picker:focus-within{outline:2px solid #ffb597}.ds-picker select{position:absolute;inset:0;width:100%;height:100%;opacity:0}"
+    },
+    {
+      "name": "Viewer Control",
+      "kind": "button",
+      "refersTo": "viewer-control",
+      "description": "44px peach glyph button used for viewer close, previous and next.",
+      "html": "<div class=\"ds-viewer-bar\"><button class=\"ds-viewer-btn\" aria-label=\"Previous photograph\">‹</button><span class=\"ds-pos\">3 / 12</span><button class=\"ds-viewer-btn\" aria-label=\"Next photograph\">›</button></div>",
+      "css": ".ds-viewer-bar{display:flex;align-items:center;gap:16px;background:#211d23;color:#fff0dd;padding:8px;font-family:'IBM Plex Sans',Arial,sans-serif}.ds-viewer-btn{min-width:44px;min-height:44px;padding:0;border:0;background:none;color:#ffb597;font:32px/1 Arial,sans-serif;cursor:pointer}.ds-viewer-btn:hover{color:#fff0dd}.ds-viewer-btn:focus-visible{outline:2px solid #ffb597;outline-offset:-4px}.ds-pos{font-size:16px;font-variant-numeric:tabular-nums}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Darkroom Ledger",
+    "overview": "The site works like a darkroom under a warm safelight: a deep plum dark, cream type, and one peach accent that marks what can be acted on. Inside that room, the work is logged plainly. Releases appear as a list of covers, titles, artists, years and roles. Photographs appear in month groups, divided by thin crop marks. The interface stays quiet so the photographs and record covers carry the page.\n\nDensity is low and the scale is generous. Body text is 20px, headings are large and tightly set in a serif, and the layout uses wide gaps instead of boxes, cards or shadows. A sticky sidebar on the left holds the name, the introduction and the navigation; the work fills the wider right column.\n\nThis document records the current system. It is descriptive, not a lock: future work may extend it (for example, with a second accent or new surface treatments) when a surface needs it. A full replacement goes through a redesign.",
+    "keyCharacteristics": [
+      "One dark theme only (`color-scheme: dark`), warm and low in contrast between surfaces.",
+      "A single accent, Safelight Peach, for links, captions, navigation and controls.",
+      "Serif display type (Newsreader) over a sans body (IBM Plex Sans).",
+      "Flat, square surfaces. Depth comes from small tonal steps, not shadows.",
+      "Darkroom details such as crop marks and a thin tick outline of the page."
+    ],
+    "rules": [
+      {
+        "name": "The Single Safelight Rule",
+        "section": "colors",
+        "body": "Peach is currently the only accent. Text and surfaces use the plum and cream neutrals; colour emphasis comes from peach alone."
+      },
+      {
+        "name": "The Regular-Weight Serif Rule",
+        "section": "typography",
+        "body": "Newsreader is used only at weight 400. Hierarchy comes from size, not weight."
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "section": "elevation",
+        "body": "Surfaces are separated by tone and 1px edges, not by shadows or blur."
+      }
+    ],
+    "dos": [
+      "Do let photographs and covers lead. Keep interface text in the sidebar, captions and credit lines.",
+      "Do use Safelight Peach for interactive and supporting text, and Print Cream for content text.",
+      "Do set titles in Newsreader at weight 400 with tight line-height (1.02) and -0.04em tracking.",
+      "Do separate content with space and 1px tonal lines before adding containers.",
+      "Do keep touch targets at least 44px, as the viewer controls and mobile picker do.",
+      "Do gate motion behind `prefers-reduced-motion: no-preference` and keep it at or under about 220ms."
+    ],
+    "donts": [
+      "Don't add shadows, rounded corners or gradients to extend the current look; they are absent today. Introduce them only as a deliberate change to the system.",
+      "Don't add captions to the full photography gallery; it currently shows photographs without visible captions.",
+      "Don't add a light theme to a single surface; the site is dark only."
+    ]
+  }
+}

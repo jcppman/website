@@ -4,8 +4,9 @@ import type { Photo } from '../lib/photos';
 interface Props {
   photo: Photo;
   lead?: boolean;
+  wide?: boolean;
 }
-const { photo, lead = false } = Astro.props;
+const { photo, lead = false, wide = lead } = Astro.props;
 ---
 
 <Image
@@ -13,9 +14,9 @@ const { photo, lead = false } = Astro.props;
   alt={photo.alt}
   widths={[400, 720, 1080, 1600]}
   sizes={
-    lead
-      ? '(max-width: 740px) 92vw, (max-width: 1560px) 58vw, 900px'
-      : '(max-width: 740px) 92vw, (max-width: 1560px) 28vw, 440px'
+    wide
+      ? '(max-width: 1560px) 92vw, 1420px'
+      : '(max-width: 740px) 92vw, (max-width: 1560px) 46vw, 700px'
   }
   format="webp"
   loading={lead ? 'eager' : 'lazy'}

@@ -17,42 +17,61 @@ const releases = await Promise.all(
 ---
 
 <Site page="Home">
-  <figure>
-    <PhotoImage photo={lead} lead />
+  <p class="statement">
+    I <a href="https://github.com/jcppman">build software</a>,{' '}
+    <a href="/portfolio/music/">make records</a> and{' '}
+    <a href="/portfolio/photography/">take photographs</a>.
+  </p>
+  <figure class="lead">
+    <div class="framed settle">
+      <PhotoImage photo={lead} lead />
+    </div>
     <figcaption>
       {[lead.caption, lead.label].filter(Boolean).join(' · ')}
     </figcaption>
   </figure>
-  <section class="selection">
-    <h2>Music</h2>
+  <section class="selection" aria-labelledby="home-music">
+    <div class="selection-head">
+      <h2 id="home-music">Music</h2>
+      <a class="more" href="/portfolio/music/">All records</a>
+    </div>
     <div class="records">
       {releases.map((release) => (
         <figure>
-          <Image
-            src={release.img}
-            alt={release.title + ' cover'}
-            widths={[320, 540, 800]}
-            sizes="(max-width:740px) 92vw, 29vw"
-            format="webp"
-          />
+          <a
+            class="framed cover-link"
+            href={release.links[0].url}
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <Image
+              src={release.img}
+              alt={release.title + ' cover'}
+              widths={[320, 540, 800]}
+              sizes="(max-width:740px) 92vw, 44vw"
+              format="webp"
+            />
+          </a>
           <figcaption>
             <strong>
               <a href={release.links[0].url}>{release.title}</a>
             </strong>
-            <span>
-              {release.artists.join(', ')} · {release.year}
-            </span>
-            <span>{release.roles.join(', ')}</span>
+            {release.artists.join(', ') !== release.title && (
+              <span class="artist">{release.artists.join(', ')}</span>
+            )}
+            <ul class="roles" aria-label="Roles">
+              {release.roles.map((role) => <li>{role}</li>)}
+            </ul>
           </figcaption>
         </figure>
       ))}
     </div>
-    <a class="more" href="/portfolio/music/" aria-label="More music">
-      More
-    </a>
   </section>
-  <section class="selection">
-    <h2>Photographs</h2>
+  <section class="selection" aria-labelledby="home-photographs">
+    <div class="selection-head">
+      <h2 id="home-photographs">Photographs</h2>
+      <a class="more" href="/portfolio/photography/">All photographs</a>
+    </div>
     <div class="photos">
       {selections.map((photo) => (
         <figure>
@@ -61,13 +80,6 @@ const releases = await Promise.all(
         </figure>
       ))}
     </div>
-    <a
-      class="more"
-      href="/portfolio/photography/"
-      aria-label="More photographs"
-    >
-      More
-    </a>
   </section>
   <script>
     import '../lib/masonry';

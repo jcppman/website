@@ -4,7 +4,7 @@ import Site from '../../layouts/Site.astro';
 import PhotoImage from '../../components/PhotoImage.astro';
 import Outline from '../../components/Outline.astro';
 import Viewer from '../../components/Viewer.astro';
-import { featuredPhoto, groups } from '../../lib/photos';
+import { featuredPhoto, groups, photos } from '../../lib/photos';
 
 const summerPhotos = [
   '20260815-8',
@@ -33,6 +33,9 @@ const sections = Array.from(groups).flatMap(([month, photos]) => {
   }
   return monthSections;
 });
+const years = Array.from(groups.keys()).map((month) => month.slice(0, 4));
+const span =
+  years.at(-1) === years[0] ? years[0] : years.at(-1) + '–' + years[0];
 const albums = await Promise.all(
   sections.map(async (section) => ({
     ...section,
@@ -54,27 +57,51 @@ const albums = await Promise.all(
 ---
 
 <Site page="Photography">
-  {albums.map(({ id, title, photos, monthAnchor }, index) => (
-    <>
-      {index > 0 && <hr class="crop-marks" />}
-      <section class="album" id={id} aria-label={title}>
-        <div class="photos" id={monthAnchor}>
-          {photos.map(({ photo, full }) => (
-            <figure>
-              <a
-                class="photo-open"
-                href={full}
-                aria-haspopup="dialog"
-                aria-label={'Open photograph: ' + photo.alt}
-              >
-                <PhotoImage photo={photo} />
-              </a>
-            </figure>
-          ))}
-        </div>
-      </section>
-    </>
-  ))}
+  <header class="page-head">
+    <h2>Photographs</h2>
+    <p>{photos.length} photographs · {span}</p>
+  </header>
+  {albums.map(({ id, title, photos, monthAnchor }, index) => {
+    const first = photos[0].photo.image;
+    const lead = photos.length > 2 && first.width > first.height;
+    const rest = lead ? photos.slice(1) : photos;
+    return (
+      <>
+        {index > 0 && <hr class="crop-marks registration" />}
+        <section class="album" id={id} aria-labelledby={id + '-title'}>
+          <h3 class="visually-hidden" id={id + '-title'}>{title}</h3>
+          <div id={monthAnchor}>
+            {lead && (
+              <figure class="album-lead">
+                <a
+                  class="photo-open"
+                  href={photos[0].full}
+                  aria-haspopup="dialog"
+                  aria-label={'Open photograph: ' + photos[0].photo.alt}
+                >
+                  <PhotoImage photo={photos[0].photo} wide />
+                </a>
+              </figure>
+            )}
+            <div class="photos">
+              {rest.map(({ photo, full }) => (
+                <figure>
+                  <a
+                    class="photo-open"
+                    href={full}
+                    aria-haspopup="dialog"
+                    aria-label={'Open photograph: ' + photo.alt}
+                  >
+                    <PhotoImage photo={photo} />
+                  </a>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  })}
   <Fragment slot="overlay">
     <Outline items={albums} />
     <Viewer />

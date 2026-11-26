@@ -15,33 +15,52 @@ const items = releases.map(({ id, data }) => ({
   cover: data.img,
   artist: data.artists.join(', '),
 }));
+const years = releases.map(({ data }) => data.year.replace(/\s*-\s*/, '–'));
 ---
 
 <Site page="Music">
-  <div class="catalog">
+  <header class="page-head">
+    <h2>Music</h2>
+    <p>{releases.length} records</p>
+  </header>
+  <ol class="ledger">
     {releases.map(({ data }, i) => (
-      <article id={items[i].id}>
-        <Image
-          src={data.img}
-          alt={data.title + ' cover'}
-          widths={[240, 400, 640]}
-          sizes="(max-width:740px) 28vw, 21vw"
-          format="webp"
-          loading={i === 0 ? 'eager' : 'lazy'}
-        />
-        <div>
-          <p class="meta">{[data.year, ...data.types].join(' · ')}</p>
-          <h2>{data.title}</h2>
-          <p>{data.artists.join(', ')}</p>
-          <p class="credit">{data.roles.join(', ')}</p>
-          {data.links.map((link) => (
-            <a class="action" href={link.url}>
-              Listen on {link.title}
-            </a>
-          ))}
+      <li class="entry" id={items[i].id}>
+        <p class="entry-year" aria-hidden={years[i] === years[i - 1] ? 'true' : undefined}>
+          {years[i] !== years[i - 1] && years[i]}
+        </p>
+        <a class="framed cover-link" href={data.links[0].url} tabindex="-1" aria-hidden="true">
+          <Image
+            src={data.img}
+            alt={data.title + ' cover'}
+            widths={[320, 560, 900]}
+            sizes="(max-width:740px) 92vw, 40vw"
+            format="webp"
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+        </a>
+        <div class="entry-body">
+          <h3>{data.title}</h3>
+          {data.artists.join(', ') !== data.title && (
+            <p class="artist">{data.artists.join(', ')}</p>
+          )}
+          <ul class="roles" aria-label="Roles">
+            {data.roles.map((role) => <li>{role}</li>)}
+          </ul>
+          <p class="meta">
+            <span class="visually-hidden">{years[i]} · </span>
+            {data.types.join(' · ')}
+          </p>
+          <p class="listen">
+            {data.links.map((link) => (
+              <a class="action" href={link.url}>
+                Listen on {link.title}
+              </a>
+            ))}
+          </p>
         </div>
-      </article>
+      </li>
     ))}
-  </div>
+  </ol>
   <Outline slot="overlay" items={items} />
 </Site>
