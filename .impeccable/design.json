@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-26T03:47:08.445Z",
+  "generatedAt": "2026-11-26T08:54:56+00:00",
   "title": "Design System: chriest.me",
   "extensions": {
     "colorMeta": {
@@ -152,23 +152,23 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The site name in the sidebar."
+        "purpose": "The name in the sidebar rail and homepage release titles."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Homepage section headings."
+        "purpose": "Page titles and homepage section headings."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Release titles in the Music catalog."
+        "purpose": "Release titles in the Music ledger."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Introduction, credits and running text."
+        "purpose": "Introduction, credits, navigation and running text."
       },
       "body-strong": {
         "displayName": "Body strong",
-        "purpose": "Current navigation item and homepage release titles."
+        "purpose": "The current page in navigation."
       },
       "caption": {
         "displayName": "Caption",
@@ -176,7 +176,11 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Outbound sidebar links, outline preview titles, mobile picker."
+        "purpose": "Outline preview titles and the mobile section picker."
+      },
+      "ledger-label": {
+        "displayName": "Ledger label",
+        "purpose": "Roles, counts, section links, link-group headings and the viewer counter."
       },
       "label-small": {
         "displayName": "Label small",
@@ -186,19 +190,29 @@
     "shadows": [],
     "motion": [
       {
+        "name": "settle",
+        "value": "900ms cubic-bezier(0.16, 1, 0.3, 1) 120ms",
+        "purpose": "Crop-mark frame settling onto the home lead photograph; the one authored moment."
+      },
+      {
         "name": "reveal-content",
         "value": "220ms ease-out",
         "purpose": "Main content fade-in on page load."
       },
       {
-        "name": "link-color",
-        "value": "120ms ease-out",
-        "purpose": "Link colour change on hover."
+        "name": "cover-frame",
+        "value": "260ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Crop-mark frame sliding out around a hovered cover."
       },
       {
         "name": "outline-tick",
         "value": "140ms ease-out",
-        "purpose": "Scroll outline tick width/colour and preview fade."
+        "purpose": "Scroll outline tick and preview flyout."
+      },
+      {
+        "name": "link-color",
+        "value": "120ms ease-out",
+        "purpose": "Link colour change on hover."
       },
       {
         "name": "viewer-open",
@@ -210,23 +224,31 @@
       {
         "name": "stack",
         "value": "740px",
-        "purpose": "At or below: single column, static sidebar, mobile section picker."
+        "purpose": "At or below: rail stacks above content, link groups side by side, one-column grids, mobile section picker."
       },
       {
         "name": "short",
-        "value": "520px (max-height)",
-        "purpose": "At or below: sidebar stops being sticky."
+        "value": "760px (max-height)",
+        "purpose": "At or below: the sidebar rail stops being sticky."
       }
     ],
     "overlays": [
       {
         "name": "viewer-backdrop",
-        "value": "rgb(16 13 17 / 92%)",
+        "value": "rgb(16 13 17 / 80%)",
         "purpose": "Photo viewer backdrop."
       }
     ]
   },
   "components": [
+    {
+      "name": "Sidebar Rail",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Narrow sticky rail: name, introduction, vertical navigation, and grouped outbound links at its foot.",
+      "html": "<aside class=\"ds-rail\"><p class=\"ds-rail-name\">Chriest Yu</p><p class=\"ds-rail-intro\">I build software, make records and take photographs.</p><nav class=\"ds-rail-nav\"><a href=\"#\">Home</a><a href=\"#\" aria-current=\"page\">Music</a><a href=\"#\">Photography</a></nav><div class=\"ds-rail-groups\"><section><h2>Software</h2><ul><li><a href=\"#\">GitHub</a></li><li><a href=\"#\">Audiorective</a></li></ul></section><section><h2>Elsewhere</h2><ul><li><a href=\"#\">Instagram</a></li><li><a href=\"#\">LinkedIn</a></li></ul></section></div></aside>",
+      "css": ".ds-rail{font-family:'IBM Plex Sans',Arial,sans-serif;width:240px;display:flex;flex-direction:column;gap:0;padding:24px;background:#211d23;color:#fff0dd;font-size:20px;line-height:1.5}.ds-rail-name{font-family:Newsreader,Georgia,serif;font-weight:400;line-height:1.02;letter-spacing:-.04em;font-size:40px;margin:0}.ds-rail-intro{max-width:25ch;margin:.8em 0 1em}.ds-rail-nav{display:grid;justify-items:start;gap:.4em;color:#ffb597}.ds-rail a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.19em;transition:color 120ms ease-out}.ds-rail a:hover{color:#ffb597}.ds-rail-nav [aria-current]{color:#fff0dd;font-weight:600;text-decoration:none}.ds-rail a:focus-visible{outline:2px solid #ffb597;outline-offset:4px}.ds-rail-groups{display:grid;gap:28px;padding-top:2rem}.ds-rail-groups h2{font-size:14px;font-weight:600;line-height:1.3;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;color:#a4919a}.ds-rail-groups ul{margin:0;padding:0;list-style:none;color:#ffb597;font-size:17px}.ds-rail-groups li+li{margin-top:.3em}"
+    },
     {
       "name": "Inline Link",
       "kind": "custom",
@@ -236,71 +258,71 @@
       "css": ".ds-body{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:20px;line-height:1.5;color:#fff0dd;background:#211d23;padding:16px;margin:0}.ds-link{color:inherit;text-decoration-thickness:1px;text-underline-offset:.19em;transition:color 120ms ease-out}.ds-link:hover{color:#ffb597}.ds-link:focus-visible{outline:2px solid #ffb597;outline-offset:4px}"
     },
     {
-      "name": "Sidebar Navigation",
-      "kind": "nav",
-      "refersTo": "nav-link",
-      "description": "Vertical peach links; the current page is cream, weight 600, no underline.",
-      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Home</a><a href=\"#\">Music</a><a href=\"#\">Photography</a></nav>",
-      "css": ".ds-nav{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:20px;line-height:1.5;display:grid;justify-items:start;gap:.4em 1em;color:#ffb597;background:#211d23;padding:16px}.ds-nav a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.19em;transition:color 120ms ease-out}.ds-nav a:hover{color:#ffb597}.ds-nav a[aria-current]{color:#fff0dd;font-weight:600;text-decoration:none}.ds-nav a:focus-visible{outline:2px solid #ffb597;outline-offset:4px}"
-    },
-    {
-      "name": "Record Figure",
-      "kind": "card",
-      "refersTo": "figure-caption",
-      "description": "Homepage release: square cover, strong title link, artists · year, roles.",
-      "html": "<figure class=\"ds-record\"><div class=\"ds-cover\"></div><figcaption><strong><a href=\"#\">Holy Cult</a></strong><span>Sun Moon · 2023</span><span>Mixing, Mastering</span></figcaption></figure>",
-      "css": ".ds-record{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:20px;line-height:1.5;margin:0;width:260px;background:#211d23;color:#fff0dd;padding:16px}.ds-cover{aspect-ratio:1;background:#312b32}.ds-record figcaption{margin-top:.5em;font-size:18px;color:#ffb597}.ds-record strong,.ds-record span{display:block}.ds-record strong{font-size:1.15em;color:#fff0dd}.ds-record a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.19em}.ds-record a:hover{color:#ffb597}"
-    },
-    {
-      "name": "Catalog Entry",
+      "name": "Section Head",
       "kind": "custom",
-      "refersTo": "title",
-      "description": "Music catalog row: cover left; metadata, serif title, artists, credits and listening links right.",
-      "html": "<article class=\"ds-entry\"><div class=\"ds-cover\"></div><div><p class=\"ds-meta\">2020 · Album</p><h2>MMXX</h2><p>Hock</p><p>Tracking, Mixing, Mastering</p><a class=\"ds-action\" href=\"#\">Bandcamp</a></div></article>",
-      "css": ".ds-entry{font-family:'IBM Plex Sans',Arial,sans-serif;font-size:20px;line-height:1.5;display:grid;grid-template-columns:minmax(110px,.9fr) minmax(0,1.5fr);gap:32px;align-items:center;padding:2rem 16px;border-top:1px solid #594b57;background:#211d23;color:#fff0dd}.ds-entry .ds-cover{aspect-ratio:1;background:#312b32}.ds-entry p{margin:0}.ds-meta{font-size:18px;color:#ffb597}.ds-entry h2{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:44px;line-height:1.02;letter-spacing:-.04em;margin:.18em 0}.ds-action{color:#ffb597;text-decoration-thickness:1px;text-underline-offset:.19em}.ds-action:focus-visible{outline:2px solid #ffb597;outline-offset:4px}"
+      "refersTo": "more-link",
+      "description": "Serif headline paired with a peach ledger-label link on one baseline.",
+      "html": "<div class=\"ds-head\"><h2>Music</h2><a href=\"#\">All records</a></div>",
+      "css": ".ds-head{font-family:'IBM Plex Sans',Arial,sans-serif;display:flex;justify-content:space-between;align-items:baseline;gap:32px;padding:16px;background:#211d23;color:#fff0dd}.ds-head h2{font-family:Newsreader,Georgia,serif;font-weight:400;line-height:1.02;letter-spacing:-.04em;font-size:72px;margin:0}.ds-head a{font-size:14px;font-weight:600;line-height:1.3;letter-spacing:.14em;text-transform:uppercase;color:#ffb597;text-decoration:none;padding-block:10px}.ds-head a:hover{color:#fff0dd}.ds-head a:focus-visible{outline:2px solid #ffb597;outline-offset:4px}"
     },
     {
-      "name": "Crop-Mark Divider",
+      "name": "Ledger Entry",
+      "kind": "custom",
+      "refersTo": "role-label",
+      "description": "Music row: year in the margin, clickable cover with a hover crop-mark frame, title, artist, role labels, type and listening link.",
+      "html": "<article class=\"ds-entry\"><p class=\"ds-year\">2022</p><a class=\"ds-cover\" href=\"#\" aria-hidden=\"true\" tabindex=\"-1\"><span></span></a><div><h3>Chirp of Doom</h3><p>Rude Gove</p><ul class=\"ds-roles\"><li>Mixing</li><li>Mastering</li></ul><p class=\"ds-type\">EP</p><a class=\"ds-action\" href=\"#\">Listen on Bandcamp</a></div></article>",
+      "css": ".ds-entry{font-family:'IBM Plex Sans',Arial,sans-serif;display:grid;grid-template-columns:90px 220px minmax(0,1fr);column-gap:32px;align-items:start;padding:40px 16px;border-top:1px solid #594b57;background:#211d23;color:#fff0dd;font-size:20px;line-height:1.5}.ds-entry p{margin:0}.ds-year{font-family:Newsreader,Georgia,serif;font-size:40px;line-height:1;color:#a4919a;font-variant-numeric:lining-nums tabular-nums}.ds-cover{position:relative;display:block}.ds-cover span{display:block;aspect-ratio:1;background:#312b32}.ds-cover::after{content:'';position:absolute;inset:-4px;opacity:0;pointer-events:none;background:linear-gradient(#ffb597 0 0) left top/28px 1px,linear-gradient(#ffb597 0 0) left top/1px 28px,linear-gradient(#ffb597 0 0) right top/28px 1px,linear-gradient(#ffb597 0 0) right top/1px 28px,linear-gradient(#ffb597 0 0) left bottom/28px 1px,linear-gradient(#ffb597 0 0) left bottom/1px 28px,linear-gradient(#ffb597 0 0) right bottom/28px 1px,linear-gradient(#ffb597 0 0) right bottom/1px 28px;background-repeat:no-repeat;transition:inset 260ms cubic-bezier(.16,1,.3,1),opacity 160ms ease-out}.ds-cover:hover::after{opacity:1;inset:-12px}.ds-entry h3{font-family:Newsreader,Georgia,serif;font-weight:400;line-height:1.02;letter-spacing:-.04em;font-size:44px;margin:0 0 .5em}.ds-roles{font-size:14px;font-weight:600;line-height:1.3;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-wrap:wrap;gap:6px 1.4em;margin:1.2em 0 0;padding:0;list-style:none;color:#ffb597}.ds-type{font-size:18px;color:#a4919a;margin-top:.6em!important}.ds-action{display:inline-block;margin-top:1.4em;color:#ffb597;text-decoration-thickness:1px;text-underline-offset:.19em}.ds-action:focus-visible{outline:2px solid #ffb597;outline-offset:4px}"
+    },
+    {
+      "name": "Crop-Mark Frame",
+      "kind": "card",
+      "refersTo": "crop-mark-rose",
+      "description": "Hairline corner marks 12px outside a featured image, with its caption below.",
+      "html": "<figure class=\"ds-frame\"><div class=\"ds-framed\"><span></span></div><figcaption>沖縄の色 · September 2024</figcaption></figure>",
+      "css": ".ds-frame{font-family:'IBM Plex Sans',Arial,sans-serif;margin:0;padding:32px;background:#211d23;width:420px}.ds-framed{position:relative}.ds-framed span{display:block;aspect-ratio:3/2;background:#594b57}.ds-framed::after{content:'';position:absolute;inset:-12px;pointer-events:none;background:linear-gradient(#cb9a8b 0 0) left top/28px 1px,linear-gradient(#cb9a8b 0 0) left top/1px 28px,linear-gradient(#cb9a8b 0 0) right top/28px 1px,linear-gradient(#cb9a8b 0 0) right top/1px 28px,linear-gradient(#cb9a8b 0 0) left bottom/28px 1px,linear-gradient(#cb9a8b 0 0) left bottom/1px 28px,linear-gradient(#cb9a8b 0 0) right bottom/28px 1px,linear-gradient(#cb9a8b 0 0) right bottom/1px 28px;background-repeat:no-repeat}.ds-frame figcaption{margin-top:.7em;font-size:18px;color:#ffb597}"
+    },
+    {
+      "name": "Registration Divider",
       "kind": "custom",
       "refersTo": "crop-mark-rose",
-      "description": "Full-width divider with only its two bottom corners drawn, between photograph months.",
-      "html": "<div class=\"ds-crop-wrap\"><hr class=\"ds-crop\"></div>",
-      "css": ".ds-crop-wrap{background:#211d23;padding:24px}.ds-crop{position:relative;height:11px;border:0;margin:0}.ds-crop::before,.ds-crop::after{content:\"\";position:absolute;top:0;width:22px;height:10px;border-bottom:1px solid #cb9a8b}.ds-crop::before{left:0;border-left:1px solid #cb9a8b}.ds-crop::after{right:0;border-right:1px solid #cb9a8b}"
+      "description": "Rule between photograph groups: crop marks at both ends and a registration target in the centre.",
+      "html": "<div class=\"ds-reg-wrap\"><hr class=\"ds-reg\"></div>",
+      "css": ".ds-reg-wrap{background:#211d23;padding:24px}.ds-reg{position:relative;height:32px;border:0;margin:0;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='none' stroke='%23cb9a8b'%3E%3Ccircle cx='16' cy='16' r='7.5'/%3E%3Cpath d='M16 0v32M0 16h32'/%3E%3C/svg%3E\") 50% 0/32px 32px no-repeat}.ds-reg::before,.ds-reg::after{content:'';position:absolute;top:0;width:40px;height:16px;border-bottom:1px solid #cb9a8b}.ds-reg::before{left:0;border-left:1px solid #cb9a8b}.ds-reg::after{right:0;border-right:1px solid #cb9a8b}"
     },
     {
       "name": "Scroll Outline",
       "kind": "nav",
       "refersTo": "outline-preview",
       "description": "Right-edge tick outline; the active tick grows and turns peach, hover shows a preview flyout.",
-      "html": "<nav class=\"ds-outline\"><a href=\"#\"><span class=\"ds-preview\"><span class=\"ds-thumb\"></span><span><strong>November</strong><small>12 photographs</small></span></span></a><a href=\"#\" aria-current=\"true\"></a><a href=\"#\"></a><a href=\"#\"></a></nav>",
-      "css": ".ds-outline{font-family:'IBM Plex Sans',Arial,sans-serif;display:flex;flex-direction:column;align-items:flex-end;background:#211d23;padding:16px 0 16px 280px;width:max-content}.ds-outline a{position:relative;display:grid;place-items:center end;width:32px;height:25px;padding-right:8px;text-decoration:none;color:#fff0dd}.ds-outline a::after{content:\"\";width:10px;height:2px;background:#a4919a;transition:width 140ms ease-out,background-color 140ms ease-out}.ds-outline a:is(:hover,:focus-visible,[aria-current])::after{width:19px;background:#ffb597}.ds-preview{position:absolute;right:100%;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:12px;width:max-content;padding:9px 14px 9px 9px;background:#312b32;border:1px solid #675661;line-height:1.25;opacity:0;transition:opacity 140ms ease-out;pointer-events:none}.ds-outline a:is(:hover,:focus-visible) .ds-preview{opacity:1}.ds-thumb{width:54px;height:54px;background:#594b57}.ds-preview strong,.ds-preview small{display:block}.ds-preview strong{font-size:17px}.ds-preview small{color:#ffb597;font-size:15px;margin-top:4px}"
+      "html": "<nav class=\"ds-outline\"><a href=\"#\"><span class=\"ds-preview\"><span class=\"ds-thumb\"></span><span><strong>Chirp of Doom</strong><small>Rude Gove</small></span></span></a><a href=\"#\" aria-current=\"true\"></a><a href=\"#\"></a><a href=\"#\"></a></nav>",
+      "css": ".ds-outline{font-family:'IBM Plex Sans',Arial,sans-serif;display:flex;flex-direction:column;align-items:flex-end;background:#211d23;padding:16px 0 16px 280px;width:max-content}.ds-outline a{position:relative;display:grid;place-items:center end;width:44px;height:26px;padding-right:8px;text-decoration:none;color:#fff0dd}.ds-outline a::after{content:'';width:10px;height:2px;background:#a4919a;transition:width 140ms ease-out,background-color 140ms ease-out}.ds-outline a:is(:hover,:focus-visible,[aria-current])::after{width:22px;background:#ffb597}.ds-preview{position:absolute;right:100%;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:12px;width:max-content;padding:9px 14px 9px 9px;background:#312b32;border:1px solid #675661;line-height:1.25;opacity:0;transition:opacity 140ms ease-out;pointer-events:none}.ds-outline a:is(:hover,:focus-visible) .ds-preview{opacity:1}.ds-thumb{width:54px;height:54px;background:#594b57}.ds-preview strong,.ds-preview small{display:block}.ds-preview strong{font-size:17px}.ds-preview small{color:#ffb597;font-size:15px;margin-top:4px}"
     },
     {
       "name": "Mobile Section Picker",
       "kind": "input",
       "refersTo": "mobile-outline",
       "description": "Bottom-right raised button covered by a transparent native select.",
-      "html": "<label class=\"ds-picker\">Sections<select aria-label=\"Jump to a section\"><option>November</option><option>October</option></select></label>",
+      "html": "<label class=\"ds-picker\">Index<select aria-label=\"Jump to a section\"><option>November 2026</option><option>October 2026</option></select></label>",
       "css": ".ds-picker{font-family:'IBM Plex Sans',Arial,sans-serif;position:relative;display:inline-block;padding:8px 16px;min-height:44px;line-height:1.5;background:#312b32;color:#ffb597;border:1px solid #76646e;font-size:17px}.ds-picker:focus-within{outline:2px solid #ffb597}.ds-picker select{position:absolute;inset:0;width:100%;height:100%;opacity:0}"
     },
     {
       "name": "Viewer Control",
       "kind": "button",
       "refersTo": "viewer-control",
-      "description": "44px peach glyph button used for viewer close, previous and next.",
-      "html": "<div class=\"ds-viewer-bar\"><button class=\"ds-viewer-btn\" aria-label=\"Previous photograph\">‹</button><span class=\"ds-pos\">3 / 12</span><button class=\"ds-viewer-btn\" aria-label=\"Next photograph\">›</button></div>",
-      "css": ".ds-viewer-bar{display:flex;align-items:center;gap:16px;background:#211d23;color:#fff0dd;padding:8px;font-family:'IBM Plex Sans',Arial,sans-serif}.ds-viewer-btn{min-width:44px;min-height:44px;padding:0;border:0;background:none;color:#ffb597;font:32px/1 Arial,sans-serif;cursor:pointer}.ds-viewer-btn:hover{color:#fff0dd}.ds-viewer-btn:focus-visible{outline:2px solid #ffb597;outline-offset:-4px}.ds-pos{font-size:16px;font-variant-numeric:tabular-nums}"
+      "description": "48px stroked-icon buttons and the ledger-label counter of the full-screen photo viewer.",
+      "html": "<div class=\"ds-viewer-bar\"><button class=\"ds-viewer-btn\" aria-label=\"Previous photograph\"><svg viewBox=\"0 0 24 24\" width=\"28\" height=\"28\" aria-hidden=\"true\"><path d=\"M15 4l-8 8 8 8\"/></svg></button><span class=\"ds-pos\">4 / 122</span><button class=\"ds-viewer-btn\" aria-label=\"Next photograph\"><svg viewBox=\"0 0 24 24\" width=\"28\" height=\"28\" aria-hidden=\"true\"><path d=\"M9 4l8 8-8 8\"/></svg></button></div>",
+      "css": ".ds-viewer-bar{font-family:'IBM Plex Sans',Arial,sans-serif;display:flex;align-items:center;gap:16px;background:#211d23;color:#fff0dd;padding:8px}.ds-viewer-btn{display:grid;place-items:center;min-width:48px;min-height:48px;padding:0;border:0;background:none;color:#ffb597;cursor:pointer}.ds-viewer-btn:hover{color:#fff0dd}.ds-viewer-btn svg{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:square}.ds-viewer-btn:focus-visible{outline:2px solid #ffb597;outline-offset:-4px}.ds-pos{font-size:14px;font-weight:600;line-height:1.3;letter-spacing:.14em;text-transform:uppercase;font-variant-numeric:tabular-nums;color:#a4919a}"
     }
   ],
   "narrative": {
     "northStar": "The Darkroom Ledger",
-    "overview": "The site works like a darkroom under a warm safelight: a deep plum dark, cream type, and one peach accent that marks what can be acted on. Inside that room, the work is logged plainly. Releases appear as a list of covers, titles, artists, years and roles. Photographs appear in month groups, divided by thin crop marks. The interface stays quiet so the photographs and record covers carry the page.\n\nDensity is low and the scale is generous. Body text is 20px, headings are large and tightly set in a serif, and the layout uses wide gaps instead of boxes, cards or shadows. A sticky sidebar on the left holds the name, the introduction and the navigation; the work fills the wider right column.\n\nThis document records the current system. It is descriptive, not a lock: future work may extend it (for example, with a second accent or new surface treatments) when a surface needs it. A full replacement goes through a redesign.",
+    "overview": "The site works like a darkroom under a warm safelight: a deep plum dark, cream type, and one peach accent that marks what can be acted on. Inside that room, the work is logged plainly. Releases appear as a list of covers, titles, artists, years and roles. Photographs appear in month groups, divided by thin crop marks. The interface stays quiet so the photographs and record covers carry the page.\n\nDensity is low and the scale is bold. Body text is 20px, display type runs up to 96px in a tight serif, and the layout uses wide gaps and 1px ledger rules instead of boxes, cards or shadows. A narrow sticky rail on the left carries the name, the introduction, the navigation and grouped outbound links; the work fills the wide column beside it.\n\nThis document records the current system. It is descriptive, not a lock: future work may extend it (for example, with a second accent or new surface treatments) when a surface needs it. A full replacement goes through a redesign.",
     "keyCharacteristics": [
       "One dark theme only (`color-scheme: dark`), warm and low in contrast between surfaces.",
       "A single accent, Safelight Peach, for links, captions, navigation and controls.",
       "Serif display type (Newsreader) over a sans body (IBM Plex Sans).",
       "Flat, square surfaces. Depth comes from small tonal steps, not shadows.",
-      "Darkroom details such as crop marks and a thin tick outline of the page."
+      "Darkroom details used deliberately: crop-mark frames on featured images, a registration-mark divider between photograph groups, and a tick outline of the page."
     ],
     "rules": [
       {
@@ -325,11 +347,13 @@
       "Do set titles in Newsreader at weight 400 with tight line-height (1.02) and -0.04em tracking.",
       "Do separate content with space and 1px tonal lines before adding containers.",
       "Do keep touch targets at least 44px, as the viewer controls and mobile picker do.",
-      "Do gate motion behind `prefers-reduced-motion: no-preference` and keep it at or under about 220ms."
+      "Do gate motion behind `prefers-reduced-motion: no-preference`; keep state changes short and reserve longer motion for one authored moment per page.",
+      "Do use crop marks and registration marks as the system's ornament, at full size, rather than adding new decoration.",
+      "Do theme browser surfaces from the palette: selection, scrollbar, caret."
     ],
     "donts": [
       "Don't add shadows, rounded corners or gradients to extend the current look; they are absent today. Introduce them only as a deliberate change to the system.",
-      "Don't add captions to the full photography gallery; it currently shows photographs without visible captions.",
+      "Don't add captions or visible group titles to the full photography gallery; group titles exist only for screen readers.",
       "Don't add a light theme to a single surface; the site is dark only."
     ]
   }

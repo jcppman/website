@@ -26,7 +26,7 @@ typography:
     letterSpacing: "-0.04em"
   title:
     fontFamily: "Newsreader, Georgia, serif"
-    fontSize: "clamp(38px, 4.4vw, 68px)"
+    fontSize: "clamp(36px, 3.8vw, 62px)"
     fontWeight: 400
     lineHeight: 1.02
     letterSpacing: "-0.04em"
@@ -147,9 +147,9 @@ A warm, near-monochrome plum palette with one peach accent.
 - **Raised Edge** (`raised-edge`): the 1px border of the outline preview.
 - **Control Edge** (`control-edge`): the 1px border of the mobile section picker.
 - **Faded Tick** (`faded-tick`): resting ticks of the scroll outline.
-- **Crop Mark Rose** (`crop-mark-rose`): the corner strokes of the crop-mark divider between photograph months.
+- **Crop Mark Rose** (`crop-mark-rose`): crop-mark frames, the registration divider between photograph groups, and the frame on the homepage lead photograph.
 
-The photo viewer backdrop is a darker plum at 92% opacity (`rgb(16 13 17 / 92%)`); it is a one-off overlay, not a palette colour.
+The photo viewer backdrop is a darker plum at 80% opacity (`rgb(16 13 17 / 80%)`); it is a one-off overlay, not a palette colour.
 
 ### Named Rules
 **The Single Safelight Rule.** Peach is currently the only accent. Text and surfaces use the plum and cream neutrals; colour emphasis comes from peach alone.
@@ -163,7 +163,7 @@ The photo viewer backdrop is a darker plum at 92% opacity (`rgb(16 13 17 / 92%)`
 
 ### Hierarchy
 - **Headline** (400, `clamp(56px, 8.6vw, 96px)`, 1.02): page titles and homepage section headings.
-- **Title** (400, `clamp(38px, 4.4vw, 68px)`, 1.02): release titles in the Music ledger.
+- **Title** (400, `clamp(36px, 3.8vw, 62px)`, 1.02): release titles in the Music ledger.
 - **Display** (400, `clamp(34px, 2.9vw, 44px)`, 1.02): the name in the sidebar rail and homepage release titles.
 - **Ledger label** (600, 14px, 0.14em tracking, uppercase): roles, counts, "All records" links and the sidebar link-group names.
 - **Body** (400, 20px, 1.5): introduction, credits, and running text. The introduction is limited to 25ch.
@@ -172,7 +172,7 @@ The photo viewer backdrop is a darker plum at 92% opacity (`rgb(16 13 17 / 92%)`
 - **Label** (400, 17px): outline preview titles, the mobile section picker.
 - **Label small** (400, 15px, 1.25): secondary lines in the outline preview.
 
-All serif roles share weight 400, line-height 1.02 and letter-spacing -0.04em. The viewer position counter uses 16px with tabular numerals.
+All serif roles share weight 400, line-height 1.02 and letter-spacing -0.04em. The viewer position counter uses the ledger label with tabular numerals.
 
 ### Named Rules
 **The Regular-Weight Serif Rule.** Newsreader is used only at weight 400. Hierarchy comes from size, not weight.
@@ -195,7 +195,7 @@ The system is flat. There are no shadows. Depth comes from small tonal steps: Ra
 
 ## Shapes
 
-Every corner is square (`rounded.none`). Images run edge to edge in their columns with no frames or radius. Lines are 1px. The recurring form is the crop mark: two short L-shaped corner strokes (22px by 10px) at the ends of a full-width divider, borrowed from print and darkroom practice.
+Every corner is square (`rounded.none`). Images run edge to edge in their columns with no frames or radius. Lines are 1px. The recurring form is the crop mark, borrowed from print and darkroom practice: hairline corner strokes around a featured image, and 40×16px L-shaped strokes at the ends of the registration divider.
 
 ## Components
 
@@ -209,8 +209,8 @@ Every corner is square (`rounded.none`). Images run edge to edge in their column
 - **Section links:** "All records" and "All photographs" as peach ledger labels.
 
 ### Figures
-- **Captions:** peach, 18px, 0.5em below the image. The homepage lead joins its caption and label with " · ".
-- **Record figures:** cover image, then the title in strong body text, then artists · year and roles on their own lines.
+- **Captions:** peach, 18px, 0.7em below the image. The homepage lead joins its caption and label with " · ".
+- **Record figures:** a clickable cover, then the title in the display serif, the artist (omitted when it repeats the title), and the roles as ledger labels.
 
 ### Crop-mark frame (signature)
 Eight 1px hairlines, 28px long, drawn 12px outside the corners of an image. The home lead photograph wears it in Crop Mark Rose and settles into place on load (900ms, ease-out-expo). Covers show it in Safelight Peach on hover, sliding out from 4px.
@@ -222,7 +222,7 @@ Year in the margin, cover as a link to the first listening URL, then title, arti
 A full-width rule with 40×16px crop marks at both ends and a registration target (circle and crosshair) in the centre, in Crop Mark Rose. It separates photograph groups and is the scroll target for group bookmarks.
 
 ### Scroll outline (signature)
-A column of short 10px by 2px Faded Tick lines on the right edge. On hover, focus, or for the current section, a tick grows to 19px and turns peach (140ms). Hovering or focusing shows a flyout to the left: a 54px square thumbnail with a title and a peach subtitle on Raised Plum with a Raised Edge border. The flyout fades in over 140ms.
+A column of short 10px by 2px Faded Tick lines on the right edge. On hover, focus, or for the current section, a tick grows to 22px and turns peach (140ms). Hovering or focusing shows a flyout to the left: a 54px square thumbnail with a title and a peach subtitle on Raised Plum with a Raised Edge border. The flyout fades in over 140ms.
 
 ### Mobile section picker
 A fixed bottom-right button on Raised Plum with a Control Edge border, peach 17px text, at least 44px tall. A transparent native `select` covers it, so the platform picker handles the choice.
