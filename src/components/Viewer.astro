@@ -4,7 +4,10 @@
       <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" /></svg>
     </button>
   </form>
-  <img class="viewer-image" alt="" hidden />
+  <picture class="viewer-picture">
+    <source class="viewer-avif" type="image/avif" />
+    <img class="viewer-image" alt="" hidden />
+  </picture>
   <span class="viewer-message" role="status"></span>
   <button type="button" class="viewer-prev" aria-label="Previous photograph">
     <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4l-8 8 8 8" /></svg>
@@ -17,6 +20,7 @@
 <script>
   const viewer = document.querySelector<HTMLDialogElement>('.photo-viewer')!;
   const image = viewer.querySelector<HTMLImageElement>('.viewer-image')!;
+  const avif = viewer.querySelector<HTMLSourceElement>('.viewer-avif')!;
   const position = viewer.querySelector<HTMLElement>('.viewer-position')!;
   const links = Array.from(
     document.querySelectorAll<HTMLAnchorElement>('.photo-open'),
@@ -33,7 +37,14 @@
     image.hidden = true;
     message.textContent = 'Loading photograph…';
     image.alt = link.querySelector('img')!.alt;
+    const sizes = displayWidth(link);
+    avif.sizes = sizes;
+    avif.srcset = link.dataset.avif ?? '';
+    image.sizes = sizes;
+    image.srcset = link.dataset.webp ?? '';
     image.src = link.href;
+    preload(current - 1);
+    preload(current + 1);
     position.textContent = current + 1 + ' / ' + links.length;
     try {
       await image.decode();
@@ -57,6 +68,26 @@
         easing: 'ease-out',
       });
     }
+  }
+  function displayWidth(link: HTMLAnchorElement) {
+    const narrow = matchMedia('(max-width: 740px)').matches;
+    const width = innerWidth - (narrow ? 0 : 160);
+    const height = innerHeight - 120;
+    const ratio = Number(link.dataset.ratio) || 1.5;
+    return Math.round(Math.min(width, height * ratio)) + 'px';
+  }
+  const preloaded = new Set<number>();
+  function preload(index: number) {
+    const i = (index + links.length) % links.length;
+    if (preloaded.has(i)) return;
+    preloaded.add(i);
+    const hint = document.createElement('link');
+    hint.rel = 'preload';
+    hint.as = 'image';
+    hint.type = 'image/avif';
+    hint.setAttribute('imagesrcset', links[i].dataset.avif ?? '');
+    hint.setAttribute('imagesizes', displayWidth(links[i]));
+    document.head.append(hint);
   }
   links.forEach((link, i) =>
     link.addEventListener('click', (event) => {

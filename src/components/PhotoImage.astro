@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import type { Photo } from '../lib/photos';
 interface Props {
   photo: Photo;
@@ -9,16 +9,17 @@ interface Props {
 const { photo, lead = false, wide = lead } = Astro.props;
 ---
 
-<Image
+<Picture
   src={photo.image}
   alt={photo.alt}
-  widths={[400, 720, 1080, 1600]}
+  formats={['avif', 'webp']}
+  fallbackFormat="webp"
+  widths={wide ? [800, 1200, 1600, 2000] : [480, 800, 1200]}
   sizes={
     wide
-      ? '(max-width: 1560px) 92vw, 1420px'
-      : '(max-width: 740px) 92vw, (max-width: 1560px) 46vw, 700px'
+      ? '(max-width: 740px) 92vw, (max-width: 1560px) 69vw, 1080px'
+      : '(max-width: 740px) 92vw, (max-width: 1560px) 35vw, 540px'
   }
-  format="webp"
   loading={lead ? 'eager' : 'lazy'}
   fetchpriority={lead ? 'high' : undefined}
 />

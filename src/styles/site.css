@@ -69,10 +69,18 @@ a:hover {
   outline: 2px solid var(--link);
   outline-offset: 4px;
 }
+picture {
+  display: block;
+}
 img {
   display: block;
   width: 100%;
   height: auto;
+}
+.lead img,
+.album-lead img,
+.photos img {
+  background: var(--raised);
 }
 .visually-hidden {
   position: absolute;
@@ -461,6 +469,9 @@ hr.crop-marks {
   grid-area: 1/1/2/-1;
   justify-self: end;
   padding-right: 18px;
+}
+.viewer-picture {
+  display: contents;
 }
 .viewer-image {
   grid-area: 2/2;

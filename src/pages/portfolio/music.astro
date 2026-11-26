@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import Site from '../../layouts/Site.astro';
 import Outline from '../../components/Outline.astro';
 
@@ -30,12 +30,13 @@ const years = releases.map(({ data }) => data.year.replace(/\s*-\s*/, '–'));
           {years[i] !== years[i - 1] && years[i]}
         </p>
         <a class="framed cover-link" href={data.links[0].url} tabindex="-1" aria-hidden="true">
-          <Image
+          <Picture
             src={data.img}
             alt={data.title + ' cover'}
-            widths={[320, 560, 900]}
-            sizes="(max-width:740px) 92vw, 40vw"
-            format="webp"
+            formats={['avif', 'webp']}
+            fallbackFormat="webp"
+            widths={[320, 560, 800]}
+            sizes="(max-width: 740px) 92vw, (max-width: 1560px) 27vw, 420px"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
         </a>
