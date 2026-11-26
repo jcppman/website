@@ -50,12 +50,6 @@ typography:
     fontSize: "17px"
     fontWeight: 400
     lineHeight: 1.5
-  statement:
-    fontFamily: "Newsreader, Georgia, serif"
-    fontSize: "clamp(42px, 6.6vw, 96px)"
-    fontWeight: 400
-    lineHeight: 1.02
-    letterSpacing: "-0.04em"
   ledger-label:
     fontFamily: "IBM Plex Sans, Arial, sans-serif"
     fontSize: "14px"
@@ -82,9 +76,12 @@ components:
     textColor: "{colors.safelight-peach}"
   nav-link:
     textColor: "{colors.safelight-peach}"
-    typography: "{typography.ledger-label}"
+    typography: "{typography.body}"
   nav-link-current:
     textColor: "{colors.print-cream}"
+    typography: "{typography.body-strong}"
+  link-group-heading:
+    textColor: "{colors.faded-tick}"
     typography: "{typography.ledger-label}"
   more-link:
     textColor: "{colors.safelight-peach}"
@@ -124,7 +121,7 @@ components:
 
 The site works like a darkroom under a warm safelight: a deep plum dark, cream type, and one peach accent that marks what can be acted on. Inside that room, the work is logged plainly. Releases appear as a list of covers, titles, artists, years and roles. Photographs appear in month groups, divided by thin crop marks. The interface stays quiet so the photographs and record covers carry the page.
 
-Density is low and the scale is bold. Body text is 20px, display type runs up to 96px in a tight serif, and the layout uses wide gaps and 1px ledger rules instead of boxes, cards or shadows. A thin masthead carries the name and navigation; the work takes the full width below it, and every page ends on a colophon.
+Density is low and the scale is bold. Body text is 20px, display type runs up to 96px in a tight serif, and the layout uses wide gaps and 1px ledger rules instead of boxes, cards or shadows. A narrow sticky rail on the left carries the name, the introduction, the navigation and grouped outbound links; the work fills the wide column beside it.
 
 This document records the current system. It is descriptive, not a lock: future work may extend it (for example, with a second accent or new surface treatments) when a surface needs it. A full replacement goes through a redesign.
 
@@ -165,11 +162,10 @@ The photo viewer backdrop is a darker plum at 92% opacity (`rgb(16 13 17 / 92%)`
 **Character:** A literary serif for names and titles, set tight and large, over a plain, technical sans for everything else. The pairing reads like a printed credit list.
 
 ### Hierarchy
-- **Statement** (400, `clamp(42px, 6.6vw, 96px)`, 1.02, max 17ch): the homepage sentence, whose three crafts are links.
 - **Headline** (400, `clamp(56px, 8.6vw, 96px)`, 1.02): page titles and homepage section headings.
 - **Title** (400, `clamp(38px, 4.4vw, 68px)`, 1.02): release titles in the Music ledger.
-- **Display** (400, `clamp(30px, 3vw, 44px)`, 1.02): the name in the masthead and colophon, and homepage release titles.
-- **Ledger label** (600, 14px, 0.14em tracking, uppercase): navigation, roles, counts, "All records" links and colophon group names.
+- **Display** (400, `clamp(34px, 2.9vw, 44px)`, 1.02): the name in the sidebar rail and homepage release titles.
+- **Ledger label** (600, 14px, 0.14em tracking, uppercase): roles, counts, "All records" links and the sidebar link-group names.
 - **Body** (400, 20px, 1.5): introduction, credits, and running text. The introduction is limited to 25ch.
 - **Body strong** (600, 20px): the current page in navigation and release titles in homepage captions (at 1.15em).
 - **Caption** (400, 18px): figure captions and catalog metadata, in peach.
@@ -183,13 +179,12 @@ All serif roles share weight 400, line-height 1.02 and letter-spacing -0.04em. T
 
 ## Layout
 
-- **Shell:** one column, maximum width 1560px, centred, padded by `inset`.
-- **Masthead:** name on the left, navigation on the right, on one baseline, closed by a 1px Ledger Rule. It wraps on phone.
-- **Homepage:** the statement, then the lead photograph in a crop-mark frame, then Music and Photographs sections. Each section head pairs a headline with a ledger-label link on the same baseline. Releases and photographs sit in two-column grids.
+- **Shell:** a two-column grid (sidebar rail and content), maximum width 1560px, centred, padded by `inset`.
+- **Sidebar rail:** a fixed column of `clamp(200px, 18vw, 260px)`, separated from the content by `clamp(40px, 5vw, 88px)`. It is sticky and at least the viewport height, so the link groups sit at its foot. Below 760px of viewport height, or 740px of width, it stops being sticky.
+- **Homepage:** the lead photograph in a crop-mark frame, then Music and Photographs sections. Each section head pairs a headline with a ledger-label link on the same baseline. Releases and photographs sit in two-column grids.
 - **Music ledger:** each entry is a three-column grid: a year column (`clamp(72px, 8vw, 140px)`, sticky, shown only when the year changes), the cover, and the text. Entries are divided by Ledger Rules. On phone the entry stacks.
 - **Photography:** a page head with the count and year span, then groups separated by registration-mark dividers. A group of three or more that starts with a landscape photograph leads with it at full width; the rest is a two-column masonry with `album-gap`. Groups carry no visible titles.
-- **Colophon:** every page ends with a crop-mark rule, the name with record and photograph counts, and link groups (Software, Elsewhere).
-- **Breakpoint 740px:** below it, every grid becomes one column and the colophon becomes two. The scroll outline turns into the bottom-right picker on touch or narrow screens.
+- **Breakpoint 740px:** below it, the rail stacks above the content, navigation becomes a wrapping row, the two link groups sit side by side, and every grid becomes one column. The scroll outline turns into the bottom-right picker on touch or narrow screens.
 
 ## Elevation & Depth
 
@@ -209,8 +204,8 @@ Every corner is square (`rounded.none`). Images run edge to edge in their column
 - **Focus:** every focusable element gets a 2px Safelight Peach outline, offset 4px.
 
 ### Navigation
-- **Masthead navigation:** ledger-label links in peach. The current page is cream with a 1px underline offset 0.6em.
-- **Colophon links:** peach 18px links in labelled groups.
+- **Sidebar navigation:** a vertical list of underlined peach links at body size. The current page is cream, weight 600, with no underline.
+- **Link groups:** at the foot of the rail, Software (GitHub, Audiorective) above Elsewhere (the other profiles). Each group has a ledger-label heading in Faded Tick and peach 17px links.
 - **Section links:** "All records" and "All photographs" as peach ledger labels.
 
 ### Figures
@@ -243,7 +238,7 @@ The one authored moment is the crop-mark frame settling onto the home lead photo
 These describe the current system. They are defaults for extending it, not prohibitions; a surface may depart from them when it has a reason.
 
 ### Do:
-- **Do** let photographs and covers lead. Keep interface text in the masthead, captions, credit lines and colophon.
+- **Do** let photographs and covers lead. Keep interface text in the sidebar, captions and credit lines.
 - **Do** use Safelight Peach for interactive and supporting text, and Print Cream for content text.
 - **Do** set titles in Newsreader at weight 400 with tight line-height (1.02) and -0.04em tracking.
 - **Do** separate content with space and 1px tonal lines before adding containers.
